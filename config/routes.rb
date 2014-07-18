@@ -3,6 +3,17 @@ Paradox::Application.routes.draw do
   root 'welcome#index'
 
   get "welcome/index"
+
+  get "/timeLine" => "welcome#timeLine"
+  get "/fame" => "welcome#fame"
+  get "/cinema" => "welcome#cinema"
+  get "/travelData" => "welcome#travelData"
+  get "/paradoxData" => "welcome#paradoxData"
+  get "/mall" => "welcome#mall"
+  get "/podcast" => "welcome#podcast"
+  get "/restArea" => "welcome#restArea"
+  get "/garage" => "welcome#garage"
+  get "/blog" => "welcome#blog"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
