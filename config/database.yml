@@ -6,9 +6,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: paradox_development
+  database: paradox
   pool: 5
   username: paradox
+  host: localhost
   password:
 
 # Warning: The database defined as "test" will be erased and

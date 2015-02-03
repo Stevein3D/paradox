@@ -1,8 +1,13 @@
 Paradox::Application.routes.draw do
 
-  root 'welcome#index'
+  resources :taglines do
+    collection { post :import }
+  end
 
-  get "welcome/index"
+  root to: 'taglines#index'
+
+  get "taglines/index"
+  get "taglines/import"
 
   get "/timeLine" => "welcome#timeLine"
   get "/fame" => "welcome#fame"
