@@ -1,28 +1,9 @@
-Paradox::Application.routes.draw do
-
-  resources :taglines do
-    collection { post :import }
-  end
-
-  root to: 'taglines#index'
-
-  get "taglines/index"
-  get "taglines/import"
-
-  get "/timeLine" => "welcome#timeLine"
-  get "/fame" => "welcome#fame"
-  get "/cinema" => "welcome#cinema"
-  get "/travelData" => "welcome#travelData"
-  get "/paradoxData" => "welcome#paradoxData"
-  get "/mall" => "welcome#mall"
-  get "/podcast" => "welcome#podcast"
-  get "/restArea" => "welcome#restArea"
-  get "/garage" => "welcome#garage"
-  get "/blog" => "welcome#blog"
+Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -58,7 +39,7 @@ Paradox::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
