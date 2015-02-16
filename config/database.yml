@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: paradox_production
-  username: paradox
-  password: <%= ENV['PARADOX_DATABASE_PASSWORD'] %>
+#production:
+#  <<: *default
+#  database: paradox_production
+#  username: paradox
+#  password: <%= ENV['PARADOX_DATABASE_PASSWORD'] %>
