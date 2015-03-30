@@ -9,6 +9,12 @@ gem 'bootstrap-sass'
 gem 'pg'
 # Use bcrypt for password hash
 gem 'bcrypt'
+# Seeds the database with fake users.
+gem 'faker'
+# For pagination
+gem 'will_paginate'
+
+gem 'bootstrap-will_paginate'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,6 +47,7 @@ group :production do
   gem 'rails_12factor'
 end
 group :development, :test do
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -53,6 +60,6 @@ end
 
 group :test do
   gem 'minitest-reporters'
-  #gem 'mini_backtrace',     '0.1.3'
+  gem 'mini_backtrace',     '0.1.3'
   #gem 'guard-minitest',     '2.3.1'
 end
