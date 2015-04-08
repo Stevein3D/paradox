@@ -2,16 +2,23 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  root                'static_pages#index'
-  get    'about'   => 'static_pages#about'
-  get    'blog'    => 'static_pages#blog'
-  get    'contact' => 'static_pages#contact'
-  get    'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  root                       'static_pages#index'
+  get    'paradoxes'      => 'static_pages#paradoxes'
+  get    'paradox_people' => 'static_pages#paradox_people'
+  get    'paradox_news'   => 'static_pages#paradox_news'
+  get    'about'          => 'static_pages#about'
+  get    'blog'           => 'static_pages#blog'
+  get    'contact'        => 'static_pages#contact'
+  get    'signup'         => 'users#new'
+  get    'login'          => 'sessions#new'
+  post   'login'          => 'sessions#create'
+  delete 'logout'         => 'sessions#destroy'
   
   resources :users
+
+  resources :taglines do
+    collection { post :import }
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
