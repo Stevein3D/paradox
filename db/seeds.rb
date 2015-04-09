@@ -22,11 +22,11 @@ User.create!(name:  "Steve Sikoryak",
                password_confirmation: password)
 end
 
-Tagline.create!(source: "A.J.'s Time Travelers"
+Tagline.create!(source: "A.J.'s Time Travelers",
                 line:   "Knowledge Is Power")
 
-Tagline.create!(source: "About Time"
+Tagline.create!(source: "About Time",
                 line:   "What if every moment in life came with a second chance?")
 
-Tagline.create!(source: "About Time"
+Tagline.create!(source: "About Time",
                 line:   "A new funny film about love. With a bit of time travel.")
