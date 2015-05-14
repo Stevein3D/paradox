@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete 'logout'         => 'sessions#destroy'
   
   resources :users
-
+  resources :account_activations, only: [:edit]
   resources :taglines do
     collection { post :import }
   end

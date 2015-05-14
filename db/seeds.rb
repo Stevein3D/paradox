@@ -10,7 +10,9 @@ User.create!(name:  "Steve Sikoryak",
              email: "stevein3d@gmail.com",
              password:              "123456",
              password_confirmation: "123456",
-             admin: true)
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)
 
 9.times do |n|
   name  = Faker::Name.name
@@ -19,7 +21,9 @@ User.create!(name:  "Steve Sikoryak",
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end
 
 Tagline.create!(source: "A.J.'s Time Travelers",
