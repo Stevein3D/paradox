@@ -1,1 +1,25 @@
-paradoxes.html.erb
+<%= flash[:notice] %>
+<h3>Import a CSV File</h3>
+<%= form_tag import_taglines_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th width="25%">Source</th>
+      <th width="73%">Line</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doxes.each do |paradox| %>
+      <tr>
+      	<td><%= dox.paradox_name %></td>
+      	<td><%= dox.brief %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+</div>

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title_index: 1
+  medium: MyString
+  sub_medium: MyString
+  title: MyText
+  description: MyText
+  country_of_origin: MyString
+  genre: MyString
+  length: MyString
+  mpaa: MyString
+  release_date: MyString
+  release_date_day: 1
+  release_date_month: 1
+  release_date_year: 
+
+two:
+  title_index: 1
+  medium: MyString
+  sub_medium: MyString
+  title: MyText
+  description: MyText
+  country_of_origin: MyString
+  genre: MyString
+  length: MyString
+  mpaa: MyString
+  release_date: MyString
+  release_date_day: 1
+  release_date_month: 1
+  release_date_year: 

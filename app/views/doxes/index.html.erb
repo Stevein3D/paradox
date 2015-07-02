@@ -1,0 +1,42 @@
+<%= flash[:notice] %>
+<h3>Import a CSV File</h3>
+<%= form_tag import_doxes_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+
+<div class="container">
+<%= form_tag(doxes_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Paradoxes" %>
+<%= submit_tag "Search" %>
+<% end %>
+</div>
+
+<% @doxes.each do |dox| %>
+<div class="container-fluid dox-entry">
+  <div class="row">
+    <div class="col-xs-2"><h5> Paradox Name </h5></div>
+    <div class="col-xs-10"><h4> <%= dox.paradox_name %> </h4></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"><h5> Paradox Brief </h5></div>
+    <div class="col-xs-10"><p> <%= dox.brief %> </p></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"><h5> Full Description </h5></div>
+    <div class="col-xs-10"><p> <%= dox.full_description %> </p></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"><h5> Discovery Date </h5></div>
+    <div class="col-xs-10"><p> <%= dox.discovery_date %> </p></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"><h5> Owner </h5></div>
+    <div class="col-xs-10"><p> <%= dox.owner %> </p></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"><h5> Example </h5></div>
+    <div class="col-xs-10"><p> <%= dox.example %> </p></div>
+  </div>
+</div>
+<% end %>

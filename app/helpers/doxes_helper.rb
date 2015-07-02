@@ -1,0 +1,2 @@
+module DoxesHelper
+end

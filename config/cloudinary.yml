@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: paradoxparkway
+  api_key: '631823539585654'
+  api_secret: BkHQ5GIMFU8Ru3REXukjWSy5vyc
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: paradoxparkway
+  api_key: '631823539585654'
+  api_secret: BkHQ5GIMFU8Ru3REXukjWSy5vyc
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: paradoxparkway
+  api_key: '631823539585654'
+  api_secret: BkHQ5GIMFU8Ru3REXukjWSy5vyc
+  enhance_image_tag: true
+  static_image_support: false

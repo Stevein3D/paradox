@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   root                       'static_pages#index'
-  get    'paradoxes'      => 'static_pages#paradoxes'
   get    'paradox_people' => 'static_pages#paradox_people'
   get    'paradox_news'   => 'static_pages#paradox_news'
   get    'about'          => 'static_pages#about'
@@ -21,9 +20,12 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :taglines do
+  resources :taglines, :doxes, :titles, :people do
     collection { post :import }
   end
+  # resources :doxes do
+  #   collection { post :import }
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

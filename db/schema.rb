@@ -11,16 +11,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613133206) do
+ActiveRecord::Schema.define(version: 20150702043126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doxes", force: :cascade do |t|
+    t.integer  "paradox_index"
+    t.string   "paradox_name"
+    t.text     "paradox"
+    t.text     "brief"
+    t.text     "full_description"
+    t.string   "discovery_date"
+    t.string   "owner"
+    t.text     "example"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "doxes", ["paradox_index"], name: "index_doxes_on_paradox_index", unique: true, using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "people_index"
+    t.string   "full_name"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.text     "event"
+    t.string   "today_date"
+    t.integer  "today_month"
+    t.integer  "today_day"
+    t.integer  "today_year"
+    t.text     "primary_skill"
+    t.text     "biography"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.integer  "people_index"
+    t.string   "full_name"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "birth_date"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
+    t.integer  "birth_year"
+    t.string   "death_date"
+    t.integer  "death_month"
+    t.integer  "death_day"
+    t.integer  "death_year"
+    t.text     "primary_skill"
+    t.text     "biography"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "taglines", force: :cascade do |t|
     t.string   "line"
     t.string   "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.integer  "title_index"
+    t.string   "medium"
+    t.string   "sub_medium"
+    t.text     "title"
+    t.text     "description"
+    t.string   "country_of_origin"
+    t.string   "genre"
+    t.string   "length"
+    t.string   "mpaa"
+    t.string   "release_date"
+    t.integer  "release_date_day"
+    t.integer  "release_date_month"
+    t.integer  "release_date_year"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
