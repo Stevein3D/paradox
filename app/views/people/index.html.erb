@@ -1,6 +1,6 @@
 <%= flash[:notice] %>
-<div class="container">
-<%= form_tag(doxes_path, :method => "get", id: "search-form") do %>
+<div class="container-fluid">
+<%= form_tag(people_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search People" %>
 <%= submit_tag "Search" %>
 <% end %>
@@ -9,7 +9,10 @@
 <% @people.each do |person| %>
 <div class="container-fluid dox-entry">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-3">
+    <%= cl_image_tag("People/" + person.people_index.to_s + ".png", :class=>"profile-photo") %>
+    </div>
+    <div class="col-xs-9">
       <div class="row">
       	<div class="col-xs-2"><h5> Full Name: </h5></div>
     	<div class="col-xs-10"><h4> <%= person.full_name %> </h4></div>  	
@@ -26,12 +29,11 @@
         <div class="col-xs-2"><h5> Primary Skill </h5></div>
     	<div class="col-xs-10"><p> <%= person.primary_skill %> </p></div>
   	  </div>
+      <div class="row">
+        <div class="col-xs-2"><h5> Biography </h5></div>
+        <div class="col-xs-10"><p> <%= person.biography %> </p></div>
+      </div>
     </div>
-    <div class="col-xs-6"><%= cl_image_tag("People/" + person.people_index.to_s + ".png") %></div>
-  </div>
-  <div class="row">
-    <div class="col-xs-2"><h5> Biography </h5></div>
-    <div class="col-xs-10"><p> <%= person.biography %> </p></div>
   </div>
 </div>
 <% end %>

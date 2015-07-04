@@ -193,6 +193,19 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/* Welcome Page */
+
+.page-button {
+  text-align: center;
+}
+
+.link-button {
+  margin: auto;
+  text-decoration: none;
+  color: black;
+}
+
 /* Miscellaneous */
 
 .debug_dump {

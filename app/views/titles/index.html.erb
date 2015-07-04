@@ -1,0 +1,39 @@
+<%= flash[:notice] %>
+<div class="container-fluid">
+<%= form_tag(titles_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Titles" %>
+<%= submit_tag "Search" %>
+<% end %>
+</div>
+
+<% @titles.each do |title| %>
+<div class="container-fluid dox-entry">
+  <div class="row">
+    <div class="col-xs-3">
+    <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo") %>
+    </div>
+    <div class="col-xs-9">
+      <div class="row">
+      	<div class="col-xs-2"><h5> Title: </h5></div>
+    	<div class="col-xs-10"><h4> <%= title.title %> </h4></div>  	
+      </div>
+      <div class="row">
+      	<div class="col-xs-2"><h5> Release Date </h5></div>
+    	<div class="col-xs-10"><p> <%= title.release_date %> </p></div>
+      </div>
+      <div class="row">
+      	<div class="col-xs-2"><h5> Production Medium </h5></div>
+    	<div class="col-xs-10"><p> <%= title.medium %> </p></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2"><h5> Genre </h5></div>
+    	<div class="col-xs-10"><p> <%= title.genre %> </p></div>
+  	  </div>
+      <div class="row">
+        <div class="col-xs-2"><h5> Description </h5></div>
+        <div class="col-xs-10"><p> <%= title.description %> </p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

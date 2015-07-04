@@ -1,0 +1,25 @@
+<%= flash[:notice] %>
+
+<h3>Import a Paradox CSV File</h3>
+<%= form_tag import_doxes_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Paradoxes" %>
+<% end %>
+
+<h3>Import a People CSV File</h3>
+<%= form_tag import_people_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import People" %>
+<% end %>
+
+<h3>Import a Titles CSV File</h3>
+<%= form_tag import_titles_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Titles" %>
+<% end %>
+
+<h3>Import a Today in Time CSV File</h3>
+<%= form_tag import_events_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Events" %>
+<% end %>

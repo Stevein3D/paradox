@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'events/index'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
 
   root                       'static_pages#index'
   get    'paradox_people' => 'static_pages#paradox_people'
+  get    'uploads'        => 'static_pages#uploads'
   get    'paradox_news'   => 'static_pages#paradox_news'
   get    'about'          => 'static_pages#about'
   get    'blog'           => 'static_pages#blog'
@@ -20,7 +23,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :taglines, :doxes, :titles, :people do
+  resources :taglines, :doxes, :titles, :people, :events do
     collection { post :import }
   end
   # resources :doxes do

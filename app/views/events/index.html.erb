@@ -1,0 +1,38 @@
+<%= flash[:notice] %>
+<div class="container-fluid">
+<%= form_tag(events_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Events" %>
+<%= submit_tag "Search" %>
+<% end %>
+</div>
+
+<% @events.each do |event| %>
+<div class="container-fluid dox-entry">
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-9">
+      <div class="row">
+      	<div class="col-xs-2"><h5> Full Name: </h5></div>
+    	<div class="col-xs-10"><h4> <%= event.full_name %> </h4></div>  	
+      </div>
+      <div class="row">
+      	<div class="col-xs-2"><h5> Event Month: </h5></div>
+    	<div class="col-xs-10"><p> <%= event.today_month %> </p></div>
+      </div>
+      <div class="row">
+      	<div class="col-xs-2"><h5> Event </h5></div>
+    	<div class="col-xs-10"><p> <%= event.event %> </p></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2"><h5> Primary SKill </h5></div>
+    	<div class="col-xs-10"><p> <%= event.primary_skill %> </p></div>
+  	  </div>
+      <div class="row">
+        <div class="col-xs-2"><h5> Biography </h5></div>
+        <div class="col-xs-10"><p> <%= event.biography %> </p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,9 +1,11 @@
 class Person < ActiveRecord::Base
   require 'csv'
 
-  # def self.search(search)
-  #   where("paradox_name ILIKE ? OR brief ILIKE ?", "%#{search}%", "%#{search}%")
-  # end
+  def self.search(search)
+    where("full_name ILIKE ? OR primary_skill ILIKE ? OR birth_date ILIKE ? OR 
+           death_date ILIKE ? OR biography ILIKE ?", 
+           "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 
 
   def self.import(file)
