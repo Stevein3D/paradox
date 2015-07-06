@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
     CSV.foreach(file.path, headers: true, encoding: 'windows-1251:utf-8') do |row|
 
       event_hash = row.to_hash # exclude the price field
-      event = Event.where(id: event_hash["id"])
+      event = Event.where(people_index: event_hash["people_index"])
 
       if event.count == 1
         event.first.update_attributes(event_hash)

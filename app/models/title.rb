@@ -14,7 +14,7 @@ class Title < ActiveRecord::Base
     CSV.foreach(file.path, headers: true, encoding: 'windows-1251:utf-8') do |row|
 
       title_hash = row.to_hash # exclude the price field
-      title = Title.where(id: title_hash["id"])
+      title = Title.where(title_index: title_hash["title_index"])
 
       if title.count == 1
         title.first.update_attributes(title_hash)

@@ -12,7 +12,7 @@ class Person < ActiveRecord::Base
     CSV.foreach(file.path, headers: true, encoding: 'windows-1251:utf-8') do |row|
 
       person_hash = row.to_hash # exclude the price field
-      person = Person.where(id: person_hash["id"])
+      person = Person.where(people_index: person_hash["people_index"])
 
       if person.count == 1
         person.first.update_attributes(person_hash)
