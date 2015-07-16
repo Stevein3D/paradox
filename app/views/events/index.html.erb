@@ -10,6 +10,7 @@
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-3">
+    <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"profile-photo") %>
     </div>
     <div class="col-xs-9">
       <div class="row">
@@ -25,12 +26,12 @@
     	<div class="col-xs-10"><p> <%= event.event %> </p></div>
       </div>
       <div class="row">
-        <div class="col-xs-2"><h5> Primary SKill </h5></div>
-    	<div class="col-xs-10"><p> <%= event.primary_skill %> </p></div>
+        <div class="col-xs-2"><h5> Blurb </h5></div>
+    	<div class="col-xs-10"><p> <%= event.blurb %> </p></div>
   	  </div>
       <div class="row">
-        <div class="col-xs-2"><h5> Biography </h5></div>
-        <div class="col-xs-10"><p> <%= event.biography %> </p></div>
+        <div class="col-xs-2"><h5> Medium </h5></div>
+        <div class="col-xs-10"><p> <%= event.medium %> </p></div>
       </div>
     </div>
   </div>

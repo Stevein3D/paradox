@@ -1,9 +1,52 @@
 <div class="center jumbotron">
   <h1>Welcome to Paradox Parkway</h1>
+  <div id="eventCarousel" class="carousel slide" data-ride="carousel" 
+                          data-interval="5000" data-pause="hover">
+  <!-- Indicators -->
+  <!-- <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol> -->
+    <div class="carousel-inner" role="listbox">
+      <% @events.shuffle.each_with_index do |event, index| %>
+        <% person = Person.find_by people_index: event.people_index %>
+        <% title  = Title.find_by title_index: event.title_index %>
+        <% next if person.nil? && title.nil? %>
+        <div class="item 
+        <% if index == 0 %>
+          active
+        <% end %>">
+          <% if event.event.downcase == "release" %>
+            <% if title.sub_medium.downcase == "film" %>
+              <h2> On this day in <%= title.release_date_year %>, <%= title.title %> first opened in theaters.</h2>
+            <% elsif title.sub_medium.downcase == "book" || "novel" || "video game" || "video" %>
+              <h2> On this day in <%= title.release_date_year %>, <%= title.title %> was released.</h2>
+            <% elsif title.sub_medium.downcase == "tv series" || "tv miniseries" || "tv movie" %>
+              <h2> On this day in <%= title.release_date_year %>, <%= title.title %> premiered.</h2>
+            <% else %>
+              <h2> On this day in <%= title.release_date_year %>, Season <%= title.season_num %> Episode <%= title.episode_num %> of <%= title.title %>, <%= title.episode_title %> was first broadcast.
+            <% end %>
+          <% elsif event.event.downcase == "birth" %>
+            <h2> On this day in <%= person.birth_year %>, <%= person.full_name %> was born.</h2>
+          <% elsif event.event.downcase == "death" %>
+            <h2> <%= person.full_name %> died on this day in <%= person.death_year %>.</h2>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
-  <h2>
-  	Today in Time: On this day in <%= @today_in_time.today_year %>, <%= @today_in_time.full_name %> was <%= @today_in_time.event %>. 
-  </h2>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#eventCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#eventCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
   <!-- <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-primary" %> -->
 </div>

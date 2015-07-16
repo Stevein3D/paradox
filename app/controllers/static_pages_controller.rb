@@ -2,8 +2,13 @@ class StaticPagesController < ApplicationController
   require 'time'
   def index
   	@tagline = Tagline.offset(rand(Tagline.count)).first
-    @today_in_time = Event.where("today_month = ? and today_day = ?", 
-                     Time.now.mon.to_i, Time.now.day.to_i).first
+
+    if Event.exists?(event_month: Time.now.mon.to_i, event_day: Time.now.day.to_i)
+      @events = Event.where("event_month = ? and event_day = ?", 
+                       Time.now.mon.to_i, Time.now.day.to_i)
+    else
+    end
+    
   end
 
   def blog
