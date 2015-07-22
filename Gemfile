@@ -14,7 +14,6 @@ gem 'bcrypt'
 gem 'faker'
 # For pagination
 gem 'will_paginate'
-
 gem 'bootstrap-will_paginate'
 # CDN Cloudinary 
 gem 'cloudinary'

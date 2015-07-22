@@ -5,6 +5,7 @@
 <%= submit_tag "Search" %>
 <% end %>
 </div>
+<%= will_paginate @titles %>
 
 <% @titles.each do |title| %>
 <div class="container-fluid dox-entry">
@@ -41,3 +42,5 @@
   </div>
 </div>
 <% end %>
+
+<%= will_paginate @titles %>

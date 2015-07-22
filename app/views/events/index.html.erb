@@ -6,20 +6,26 @@
 <% end %>
 </div>
 
+<%= will_paginate %>
+
 <% @events.each do |event| %>
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-3">
-    <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"profile-photo") %>
+    <% if event.people_index.nil? %>
+      <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"profile-photo") %>
+    <% else %>
+      <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"profile-photo") %>
+    <% end %>
     </div>
     <div class="col-xs-9">
       <div class="row">
-      	<div class="col-xs-2"><h5> Full Name: </h5></div>
-    	<div class="col-xs-10"><h4> <%= event.full_name %> </h4></div>  	
+      	<div class="col-xs-2"><h5> Full Index: </h5></div>
+    	<div class="col-xs-10"><h4> <%= event.event_index %> </h4></div>  	
       </div>
       <div class="row">
-      	<div class="col-xs-2"><h5> Event Month: </h5></div>
-    	<div class="col-xs-10"><p> <%= event.today_month %> </p></div>
+      	<div class="col-xs-2"><h5> Event Year: </h5></div>
+    	<div class="col-xs-10"><p> <%= event.event_year %> </p></div>
       </div>
       <div class="row">
       	<div class="col-xs-2"><h5> Event </h5></div>
@@ -27,13 +33,11 @@
       </div>
       <div class="row">
         <div class="col-xs-2"><h5> Blurb </h5></div>
-    	<div class="col-xs-10"><p> <%= event.blurb %> </p></div>
+    	<div class="col-xs-10"><p> <%= event.event_message %> </p></div>
   	  </div>
-      <div class="row">
-        <div class="col-xs-2"><h5> Medium </h5></div>
-        <div class="col-xs-10"><p> <%= event.medium %> </p></div>
-      </div>
     </div>
   </div>
 </div>
 <% end %>
+
+<%= will_paginate %>

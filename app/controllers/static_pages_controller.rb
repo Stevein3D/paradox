@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   require 'time'
   def index
+    @today = Time.now
   	@tagline = Tagline.offset(rand(Tagline.count)).first
 
     if Event.exists?(event_month: Time.now.mon.to_i, event_day: Time.now.day.to_i)
