@@ -23,14 +23,14 @@
             <div class="col-xs-6">
               <div class="row">
                 <% if event.event.downcase == "release" %>
-                    <% if title.sub_medium.downcase == "film" %>
+                    <% if title.sub_medium.downcase.include? "film" %>
                       <h2> On this day in <%= title.release_year %>, <%= title.title %> first opened in theaters.</h2>
-                    <% elsif title.sub_medium.downcase == "tv series episode" %>
+                    <% elsif title.sub_medium.downcase.include? "episode" %>
                       <h2> On this day in <%= title.release_year %>, Season <%= title.season_num %> Episode <%= title.episode_num %> of <%= title.title %>, <%= title.episode %> was first broadcast.</h2>
-                    <% elsif title.sub_medium.downcase == "book" || "novel" || "video game" || "video" %>
-                      <h2> On this day in <%= title.release_year %>, <%= title.title %> was released.</h2>
-                    <% elsif title.sub_medium.downcase == "tv series" || "tv miniseries" || "tv movie" %>
+                    <% elsif title.sub_medium.downcase.include? "tv series" || "tv miniseries" || "tv movie" %>
                       <h2> On this day in <%= title.release_year %>, <%= title.title %> premiered.</h2>
+                    <% elsif title.sub_medium.downcase.include? "book" || "novel" || "video game" || "video" %>
+                      <h2> On this day in <%= title.release_year %>, <%= title.title %> was released.</h2>
                     <% end %>
                 <% elsif event.event.downcase == "birth" %>
                   <h2> Happy <%= person.age.ordinalize %> birthday, <%= person.full_name %>!</h2>

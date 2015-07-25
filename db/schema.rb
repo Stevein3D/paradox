@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20150723230013) do
     t.integer  "release_year"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "episode"
+    t.text     "episode"
     t.integer  "episode_num"
     t.integer  "season_num"
     t.text     "title_sort"
