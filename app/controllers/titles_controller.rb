@@ -3,11 +3,10 @@ class TitlesController < ApplicationController
   def index
     @titles = Title.all
       if params[:search]
-    	@titles = Title.search(params[:search])
+    	@titles = Title.search(params[:search], params[:page])
   	  else
-    	@titles = Title.all
+    	@titles = Title.paginate(page: params[:page], :per_page => 20)
   	end
-    @titles = Title.paginate(page: params[:page], :per_page => 20)
   end 
 
   def import

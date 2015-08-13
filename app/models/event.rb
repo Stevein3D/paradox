@@ -2,9 +2,9 @@ class Event < ActiveRecord::Base
   require 'csv'
 
   def self.search(search, page)
-    order('event').where("cast(people_index as text) ILIKE ? OR cast(title_index as text) ILIKE ? OR event ILIKE ? OR 
-           event_date ILIKE ? OR event_message ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", 
-           "%#{search}%", "%#{search}%").paginate(page: page, per_page: 20)
+    order('event').where("cast(people_index as text) ILIKE ? OR cast(title_index as text) ILIKE ? OR cast(event_index as text) ILIKE ? 
+                         OR event ILIKE ? OR event_date ILIKE ? OR event_message ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%",
+                         "%#{search}%", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 20)
   end
 
 

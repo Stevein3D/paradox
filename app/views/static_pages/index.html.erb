@@ -1,6 +1,10 @@
 <div class="center jumbotron">
   <h1>Welcome to Paradox Parkway</h1>
   <h2><%=@today.strftime("%A %B #{@today.day.ordinalize} %Y")%></h2>
+</div>
+
+<% if @events.nil? %>
+<% else %>
   <div id="eventCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" data-pause="hover">
     <div class="carousel-inner" role="listbox">
       <% @events.shuffle.each_with_index do |event, index| %>
@@ -13,7 +17,7 @@
         <div class="item <% if index == 0 %> active <% end %>">
         
           <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-3 text-center">
               <% if event.people_index.nil? %>
                 <%= cl_image_tag("People/" + "40000" + ".png", :class=>"profile-photo") %>
               <% else %>
@@ -27,9 +31,9 @@
                       <h2> On this day in <%= title.release_year %>, <%= title.title %> first opened in theaters.</h2>
                     <% elsif title.sub_medium.downcase.include? "episode" %>
                       <h2> On this day in <%= title.release_year %>, Season <%= title.season_num %> Episode <%= title.episode_num %> of <%= title.title %>, <%= title.episode %> was first broadcast.</h2>
-                    <% elsif title.sub_medium.downcase.include? "tv series" || "tv miniseries" || "tv movie" %>
+                    <% elsif title.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
                       <h2> On this day in <%= title.release_year %>, <%= title.title %> premiered.</h2>
-                    <% elsif title.sub_medium.downcase.include? "book" || "novel" || "video game" || "video" %>
+                    <% elsif title.sub_medium =~ /book|novel|video game|video|short/i %>
                       <h2> On this day in <%= title.release_year %>, <%= title.title %> was released.</h2>
                     <% end %>
                 <% elsif event.event.downcase == "birth" %>
@@ -46,9 +50,9 @@
                 <% end %>
               </div>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-3 text-center">
               <% if event.title_index.nil? %>
-                <%= cl_image_tag("Titles/" + "10000" + ".png", :class=>"profile-photo") %>
+                <%= cl_image_tag("Titles/" + "10000" + ".png", :class=>"profile-photo col-centered") %>
               <% else %>
                 <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"profile-photo", :default_image => "Titles:10000.png") %>
               <% end %>
@@ -67,8 +71,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
-  
+<% end %>
 
   <!-- <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-primary" %> -->
 

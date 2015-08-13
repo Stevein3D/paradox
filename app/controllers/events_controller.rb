@@ -8,6 +8,10 @@ class EventsController < ApplicationController
   	end
   end 
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def import
   	Event.import(params[:file])
   	redirect_to events_url, notice: "File imported."

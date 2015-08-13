@@ -1,10 +1,10 @@
 class Person < ActiveRecord::Base
   require 'csv'
 
-  def self.search(search)
-    where("full_name ILIKE ? OR primary_skill ILIKE ? OR birth_date ILIKE ? OR 
-           death_date ILIKE ? OR biography ILIKE ?", 
-           "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  def self.search(search, page)
+    order('full_name').where("cast(people_index as text) ILIKE ? OR full_name ILIKE ? OR birth_date ILIKE ? OR 
+           death_date ILIKE ? OR primary_skill ILIKE ? OR biography ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", 
+           "%#{search}%", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 20)
   end
 
   def age
