@@ -1,4 +1,3 @@
-<%= flash[:notice] %>
 <h3>Import a CSV File</h3>
 <%= form_tag import_taglines_path, multipart: true do %>
   <%= file_field_tag :file %>
@@ -7,15 +6,15 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
+      <th width="10">Index</th>
       <th width="25%">Source</th>
-      <th width="73%">Line</th>
+      <th width="65%">Line</th>
     </tr>
   </thead>
   <tbody>
     <% @taglines.each do |tagline| %>
       <tr>
-      	<td><%= tagline.id %></td>
+      	<td><%= tagline.tagline_index %></td>
       	<td><%= tagline.source %></td>
         <td><%= tagline.line %></td>
       </tr>

@@ -8,6 +8,10 @@ class PeopleController < ApplicationController
   	end
   end 
 
+  def show
+    @person = Person.find(params[:id])  
+  end
+
   def import
   	Person.import(params[:file])
   	redirect_to people_url, notice: "Paradoxes imported."

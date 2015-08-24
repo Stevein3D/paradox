@@ -6,8 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "Steve Sikoryak",
+User.create!(name:  "Steven Sikoryak",
              email: "stevein3d@gmail.com",
+             password:              "123456",
+             password_confirmation: "123456",
+             admin:     true,
+             activated: true,
+             activated_at: Time.zone.now)
+
+User.create!(name:  "Steve Sikoryak",
+             email: "happyandnutty@yahoo.com",
              password:              "123456",
              password_confirmation: "123456",
              admin:     true,
@@ -25,12 +33,3 @@ User.create!(name:  "Steve Sikoryak",
                activated: true,
                activated_at: Time.zone.now)
 end
-
-Tagline.create!(source: "A.J.'s Time Travelers",
-                line:   "Knowledge Is Power")
-
-Tagline.create!(source: "About Time",
-                line:   "What if every moment in life came with a second chance?")
-
-Tagline.create!(source: "About Time",
-                line:   "A new funny film about love. With a bit of time travel.")

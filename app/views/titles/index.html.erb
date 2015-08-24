@@ -1,4 +1,3 @@
-<%= flash[:notice] %>
 <div class="container-fluid">
 <%= form_tag(titles_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Titles" %>
@@ -39,9 +38,17 @@
         <div class="col-xs-2"><h5> Description </h5></div>
         <div class="col-xs-10"><p> <%= title.description %> </p></div>
       </div>
+      <div class="row">
+        <% if !current_user.nil? && current_user.admin? %>
+          |  <%= link_to "delete", title, method: :delete, 
+                     data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 <% end %>
 
 <%= will_paginate %>
+
+<h2> <%= @titles.count %> total entries. </h2>

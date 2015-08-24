@@ -26,20 +26,20 @@
             </div>
             <div class="col-xs-6">
               <div class="row">
-                <% if event.event.downcase == "release" %>
-                    <% if title.sub_medium.downcase.include? "film" %>
-                      <h2> On this day in <%= title.release_year %>, <%= title.title %> first opened in theaters.</h2>
-                    <% elsif title.sub_medium.downcase.include? "episode" %>
-                      <h2> On this day in <%= title.release_year %>, Season <%= title.season_num %> Episode <%= title.episode_num %> of <%= title.title %>, <%= title.episode %> was first broadcast.</h2>
+                <% if event.event =~ /release/i %>
+                    <% if title.sub_medium =~ /film/i %>
+                      <h2> On this day in <%= title.release_year %>, <%= link_to title.title, title_path(title.id) %> first opened in theaters.</h2>
+                    <% elsif title.sub_medium =~ /episode/i %>
+                      <h2> On this day in <%= title.release_year %>, Season <%= title.season_num %> Episode <%= title.episode_num %> of <%= link_to title.title, title_path(title.id) %>, <%= title.episode %> was first broadcast.</h2>
                     <% elsif title.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
-                      <h2> On this day in <%= title.release_year %>, <%= title.title %> premiered.</h2>
+                      <h2> On this day in <%= title.release_year %>, <%= link_to title.title, title_path(title.id) %> premiered.</h2>
                     <% elsif title.sub_medium =~ /book|novel|video game|video|short/i %>
-                      <h2> On this day in <%= title.release_year %>, <%= title.title %> was released.</h2>
+                      <h2> On this day in <%= title.release_year %>, <%= link_to title.title, title_path(title.id) %> was released.</h2>
                     <% end %>
-                <% elsif event.event.downcase == "birth" %>
-                  <h2> Happy <%= person.age.ordinalize %> birthday, <%= person.full_name %>!</h2>
-                <% elsif event.event.downcase == "death" %>
-                  <h2> <%= person.full_name %> died on this day in <%= person.death_year %>.</h2>
+                <% elsif event.event =~ /birth/i %>
+                  <h2> Happy <%= person.age.ordinalize %> birthday, <%= link_to person.full_name, person_path(person.id) %>!</h2>
+                <% elsif event.event =~ /death/i %>
+                  <h2> <%= person.full_name %> died on this day in <%= link_to person.death_year, person_path(person.id) %>.</h2>
                 <% end %>
               </div>
               <div class="row">
@@ -83,4 +83,8 @@
     <div class="col-md-4 "><h5 class="page-button"><%= link_to "Paradoxes", doxes_path, class: "btn btn-primary" %></h5></div>
   </div>
 </div>
-  <!-- <h2><%= @tagline.line%></h2><h2>-<%= @tagline.source%></h2> -->
+
+<div class="row">
+  <div class="col-md-6"><h2><%= @tagline.line%></h2></div>
+  <div class="col-md-6"><h2>-<%= link_to @tagline.source, title_path(Title.find_by(title_index: @tagline.tagline_index))%></h2></div>
+</div>
