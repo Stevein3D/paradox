@@ -85,6 +85,6 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6"><h2><%= @tagline.line%></h2></div>
-  <div class="col-md-6"><h2>-<%= link_to @tagline.source, title_path(Title.find_by(title_index: @tagline.tagline_index))%></h2></div>
+  <div class="col-md-6"><h2><%= @tagline.tagline %></h2></div>
+  <div class="col-md-6"><h2>-<%= link_to @tagline.title, title_path(Title.find_by(title_index: @tagline.title_index))%></h2></div>
 </div>
