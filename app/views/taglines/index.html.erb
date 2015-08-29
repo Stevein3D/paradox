@@ -6,17 +6,19 @@
 <table>
   <thead>
     <tr>
-      <th width="10">Index</th>
-      <th width="25%">Source</th>
-      <th width="65%">Line</th>
+      <th width="10">Tagline_index</th>
+      <th width="25%">Tagline</th>
+      <th width="10">Title_index</th>
+      <th width="55%">Title</th>
     </tr>
   </thead>
   <tbody>
     <% @taglines.each do |tagline| %>
       <tr>
       	<td><%= tagline.tagline_index %></td>
-      	<td><%= tagline.source %></td>
-        <td><%= tagline.line %></td>
+        <td><%= tagline.tagline %></td>
+      	<td><%= tagline.title_index %></td>
+        <td><%= tagline.title %></td>
       </tr>
     <% end %>
   </tbody>
