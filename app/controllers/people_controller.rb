@@ -12,6 +12,12 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])  
   end
 
+  def destroy
+    Person.find(params[:id]).destroy
+    flash[:success] = "Person deleted"
+    redirect_to titles_url
+  end
+
   def import
   	Person.import(params[:file])
   	redirect_to people_url, notice: "Paradoxes imported."

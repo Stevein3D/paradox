@@ -34,6 +34,12 @@
         <div class="col-xs-2"><h5> Biography </h5></div>
         <div class="col-xs-10"><p> <%= person.biography %> </p></div>
       </div>
+      <div class="row">
+        <% if !current_user.nil? && current_user.admin? %>
+          |  <%= link_to "delete", person, method: :delete, 
+                     data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

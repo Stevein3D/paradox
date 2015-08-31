@@ -12,6 +12,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def destroy
+    Event.find(params[:id]).destroy
+    flash[:success] = "Event deleted"
+    redirect_to events_url
+  end
+
   def import
   	Event.import(params[:file])
   	redirect_to events_url, notice: "File imported."
