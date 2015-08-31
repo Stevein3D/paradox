@@ -8,6 +8,12 @@ class DoxesController < ApplicationController
   	end
   end 
 
+  def destroy
+    Dox.find(params[:id]).destroy
+    flash[:success] = "Paradox deleted"
+    redirect_to doxes_url
+  end
+
   def import
   	Dox.import(params[:file])
   	redirect_to doxes_url, notice: "Paradoxes imported."

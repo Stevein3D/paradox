@@ -16,29 +16,28 @@
     <div class="col-xs-9">
       <div class="row">
       	<div class="col-xs-2"><h5> Full Name: </h5></div>
-    	<div class="col-xs-10"><h4> <%= person.full_name %> </h4></div>  	
+    	  <div class="col-xs-10"><h4> <%= person.full_name %> </h4>
+          <% if !current_user.nil? && current_user.admin? %>
+          |  <%= link_to "delete", person, method: :delete, 
+                     data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>  	
       </div>
       <div class="row">
       	<div class="col-xs-2"><h5> Birth Date </h5></div>
-    	<div class="col-xs-10"><p> <%= person.birth_date %> </p></div>
+    	  <div class="col-xs-10"><p> <%= person.birth_date %> </p></div>
       </div>
       <div class="row">
       	<div class="col-xs-2"><h5> Death Date </h5></div>
-    	<div class="col-xs-10"><p> <%= person.death_date %> </p></div>
+    	  <div class="col-xs-10"><p> <%= person.death_date %> </p></div>
       </div>
       <div class="row">
         <div class="col-xs-2"><h5> Primary Skill </h5></div>
-    	<div class="col-xs-10"><p> <%= person.primary_skill %> </p></div>
+    	  <div class="col-xs-10"><p> <%= person.primary_skill %> </p></div>
   	  </div>
       <div class="row">
         <div class="col-xs-2"><h5> Biography </h5></div>
         <div class="col-xs-10"><p> <%= person.biography %> </p></div>
-      </div>
-      <div class="row">
-        <% if !current_user.nil? && current_user.admin? %>
-          |  <%= link_to "delete", person, method: :delete, 
-                     data: { confirm: "Are you sure?" } %>
-        <% end %>
       </div>
     </div>
   </div>

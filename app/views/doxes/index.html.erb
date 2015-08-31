@@ -9,7 +9,12 @@
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-2"><h5> Paradox Name </h5></div>
-    <div class="col-xs-10"><h4> <%= dox.paradox_name %> </h4></div>
+    <div class="col-xs-10"><h4> <%= dox.paradox_name %> </h4>
+      <% if !current_user.nil? && current_user.admin? %>
+          |  <%= link_to "delete", dox, method: :delete, 
+                     data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class="col-xs-2"><h5> Paradox Brief </h5></div>
