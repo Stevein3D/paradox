@@ -1,8 +1,10 @@
 class Dox < ActiveRecord::Base
   require 'csv'
 
-  def self.search(search)
-    where("paradox_name ILIKE ? OR brief ILIKE ?", "%#{search}%", "%#{search}%")
+  def self.search(search, page)
+    order('dox').where("cast(paradox_index as text) ILIKE ? OR cast(discovery_date as text) ILIKE ? OR paradox_name ILIKE ? OR paradox ILIKE ? OR 
+                        brief ILIKE ? OR full_description ILIKE ? OR owner ILIKE ? OR example ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%",
+                         "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 20)
   end
 
 

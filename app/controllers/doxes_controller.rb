@@ -2,9 +2,9 @@ class DoxesController < ApplicationController
   def index
    	@doxes = Dox.all
       if params[:search]
-    	@doxes = Dox.search(params[:search])
+    	@doxes = Dox.search(params[:search], params[:page])
   	  else
-    	@doxes = Dox.all
+    	@doxes = Dox.all.paginate(page: params[:page], :per_page => 15)
   	end
   end 
 

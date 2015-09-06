@@ -29,7 +29,7 @@
                 <% if event.event =~ /release/i %>
                     <% if title.sub_medium =~ /film/i %>
                       <h2> On this day in <%= title.release_year %>, <%= link_to title.title, title_path(title.id) %> first opened in theaters.</h2>
-                    <% elsif title.sub_medium =~ /episode/i %>
+                    <% elsif title.sub_medium =~ /episode|comic/i %>
                       <h2> On this day in <%= title.release_year %>, Season <%= title.season_num %> Episode <%= title.episode_num %> of <%= link_to title.title, title_path(title.id) %>, <%= title.episode %> was first broadcast.</h2>
                     <% elsif title.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
                       <h2> On this day in <%= title.release_year %>, <%= link_to title.title, title_path(title.id) %> premiered.</h2>
@@ -85,6 +85,15 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6"><h2><%= @tagline.tagline %></h2></div>
-  <div class="col-md-6"><h2>-<%= link_to @tagline.title, title_path(Title.find_by(title_index: @tagline.title_index))%></h2></div>
+  <div><h2><%= @tagline.tagline %></h2></div>
+</div>
+<div class="row">
+  <div class="text-center">
+  <div id="click-me" class="btn btn-default">Click to reveal the source!</div>
+  <% if Title.find_by(title_index: @tagline.title_index).nil? %>
+    <div id="tagline-source"><h2>- <%= @tagline.title %></h2></div>
+  <% else %>
+    <div id="tagline-source"><h2>- <%= link_to @tagline.title, title_path(Title.find_by(title_index: @tagline.title_index))%></h2></div>
+  <% end %>
+  </div>
 </div>

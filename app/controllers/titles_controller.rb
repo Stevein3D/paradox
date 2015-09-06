@@ -6,7 +6,7 @@ class TitlesController < ApplicationController
       if params[:search]
     	@titles = Title.search(params[:search], params[:page])
   	  else
-    	@titles = Title.paginate(page: params[:page], :per_page => 20)
+    	@titles = Title.paginate(page: params[:page], :per_page => 15)
   	end
   end 
 

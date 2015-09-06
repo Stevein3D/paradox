@@ -4,7 +4,7 @@ class PeopleController < ApplicationController
       if params[:search]
     	@people = Person.search(params[:search], params[:page])
   	  else
-    	@people = Person.paginate(page: params[:page], :per_page => 20)
+    	@people = Person.paginate(page: params[:page], :per_page => 15)
   	end
   end 
 
