@@ -84,16 +84,34 @@
   </div>
 </div>
 
-<div class="row">
-  <div><h2><%= @tagline.tagline %></h2></div>
-</div>
-<div class="row">
-  <div class="text-center">
-  <div id="click-me" class="btn btn-default">Click to reveal the source!</div>
-  <% if Title.find_by(title_index: @tagline.title_index).nil? %>
-    <div id="tagline-source"><h2>- <%= @tagline.title %></h2></div>
-  <% else %>
-    <div id="tagline-source"><h2>- <%= link_to @tagline.title, title_path(Title.find_by(title_index: @tagline.title_index))%></h2></div>
-  <% end %>
+<div id="taglineCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" data-pause="hover">
+  <div class="carousel-inner" role="listbox">
+    <% @taglines.shuffle.each_with_index do |tagline, index| %>
+      <div class="item <% if index == 0 %> active <% end %>">
+        <div class="row">
+          <div><h2><%= tagline.tagline %></h2></div>
+        </div>
+        <div class="row">
+          <div class="text-center">
+            <div class="click-me btn btn-default">Click to reveal the source!
+            </div>
+            <% if Title.find_by(title_index: tagline.title_index).nil? %>
+              <div class="tagline-source"><h2>- <%= tagline.title %></h2></div>
+            <% else %>
+              <div class="tagline-source"><h2>- <%= link_to tagline.title, title_path(Title.find_by(title_index: tagline.title_index))%></h2></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#taglineCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#taglineCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

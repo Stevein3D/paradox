@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    $("#click-me").click(function(){
-    	$("#click-me").hide();
-        $("#tagline-source").show();
+    $(".click-me").click(function(){
+    	$(this).hide();
+        $('#taglineCarousel > .carousel-inner > .active > .row > .text-center > .tagline-source').show();
     });
 });
