@@ -19,9 +19,9 @@
           <div class="row">
             <div class="col-xs-3 text-center">
               <% if event.people_index.nil? %>
-                <%= cl_image_tag("People/" + "40000" + ".png", :class=>"profile-photo") %>
+                <%= cl_image_tag("People/" + "40000" + ".png", :class=>"event-photo") %>
               <% else %>
-                <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"profile-photo", :default_image => "People:40000.png") %>
+                <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
               <% end %>
             </div>
             <div class="col-xs-6">
@@ -52,9 +52,9 @@
             </div>
             <div class="col-xs-3 text-center">
               <% if event.title_index.nil? %>
-                <%= cl_image_tag("Titles/" + "10000" + ".png", :class=>"profile-photo col-centered") %>
+                <%= cl_image_tag("Titles/" + "10000" + ".png", :class=>"event-photo col-centered") %>
               <% else %>
-                <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"profile-photo", :default_image => "Titles:10000.png") %>
+                <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
               <% end %>
             </div>
           </div>
@@ -76,13 +76,14 @@
   <!-- <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-primary" %> -->
 
 
-<div class="container">
+
   <div class="row">
-    <div class="col-md-4 "><h5 class="page-button"><%= link_to "People", people_path, class: "btn btn-primary" %></h5></div>
-    <div class="col-md-4 "><h5 class="page-button"><%= link_to "Titles", titles_path, class: "btn btn-primary" %></h5></div>
-    <div class="col-md-4 "><h5 class="page-button"><%= link_to "Paradoxes", doxes_path, class: "btn btn-primary" %></h5></div>
+    <div class="col-md-3 "><h5 class="page-button"><%= link_to "People", people_path, class: "btn btn-primary" %></h5></div>
+    <div class="col-md-3 "><h5 class="page-button"><%= link_to "Titles", titles_path, class: "btn btn-primary" %></h5></div>
+    <div class="col-md-3 "><h5 class="page-button"><%= link_to "Events", events_path, class: "btn btn-primary" %></h5></div>
+    <div class="col-md-3 "><h5 class="page-button"><%= link_to "Paradoxes", doxes_path, class: "btn btn-primary" %></h5></div>
   </div>
-</div>
+
 
 <div id="taglineCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
   <div class="carousel-inner" role="listbox">

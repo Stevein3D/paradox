@@ -11,7 +11,7 @@
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-3">
-    <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo") %>
+    <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo img-responsive") %>
     </div>
     <div class="col-xs-9">
       <div class="row">
@@ -21,7 +21,7 @@
       </div>
       <% if !title.season_num.nil? %>
         <div class="row">
-          <div class="col-xs-6"><p><strong>Season # / Epsiode #:</strong> <%=title.season_num%> / <%= title.episode_num%></p></div>
+          <div class="col-xs-6"><p><strong>Season:</strong>  <%=title.season_num%> <strong>Episode:</strong>  <%= title.episode_num%></p></div>
           <div class="col-xs-6"><p><strong>Episode:</strong> <%=title.episode%> </p></div>
         </div>
       <% end %>
@@ -34,7 +34,7 @@
         <div class="col-xs-6"><p> <strong>MPAA:</strong> <%= title.mpaa %> </p></div>
       </div>
       <div class="row">
-        <div class="col-xs-6"><p> <strong>Production Sub-medium:</strong> <%= title.sub_medium %> </p></div>
+        <div class="col-xs-6"><p> <strong>Medium:</strong> <%= title.sub_medium %> </p></div>
         <div class="col-xs-6"><p> <strong>Genre:</strong> <%= title.genre %> </p></div>
       </div>
       <div class="row">
