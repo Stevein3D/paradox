@@ -18,8 +18,8 @@
         
           <div class="row">
             <div class="col-xs-3 text-center">
-              <% if event.people_index.nil? %>
-                <%= cl_image_tag("People/" + "40000" + ".png", :class=>"event-photo") %>
+              <% if event.event =~ /release/i %>
+                <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
               <% else %>
                 <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
               <% end %>
@@ -51,8 +51,8 @@
               </div>
             </div>
             <div class="col-xs-3 text-center">
-              <% if event.title_index.nil? %>
-                <%= cl_image_tag("Titles/" + "10000" + ".png", :class=>"event-photo col-centered") %>
+              <% if event.event =~ /release/i %>
+                <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
               <% else %>
                 <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
               <% end %>
