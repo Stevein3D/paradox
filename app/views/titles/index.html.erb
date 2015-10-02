@@ -15,34 +15,35 @@
     </div>
     <div class="col-xs-9">
       <div class="row">
-      	<div class="col-xs-2"><h5> Title: </h5></div>
-    	  <div class="col-xs-10"><h4> <%= title.title %> </h4>
-          <% if !current_user.nil? && current_user.admin? %>
-          |  <%= link_to "delete", title, method: :delete, 
-                     data: { confirm: "Are you sure?" } %>
-          <% end %>
+    	  <div class="col-xs-12"><h4> <%= title.title %></h4>
+          <br>
         </div>  	
       </div>
+      <% if !title.season_num.nil? %>
+        <div class="row">
+          <div class="col-xs-6"><p><strong>Season # / Epsiode #:</strong> <%=title.season_num%> / <%= title.episode_num%></p></div>
+          <div class="col-xs-6"><p><strong>Episode:</strong> <%=title.episode%> </p></div>
+        </div>
+      <% end %>
       <div class="row">
-      	<div class="col-xs-2"><h5> Release Date </h5></div>
-    	  <div class="col-xs-10"><p> <%= title.release_date %> </p></div>
+    	  <div class="col-xs-6"><p> <strong>Release Date:</strong> <%= title.release_date %> </p></div>
+        <div class="col-xs-6"><p> <strong>Country of Release:</strong> <%= title.country %> </p></div>
       </div>
       <div class="row">
-      	<div class="col-xs-2"><h5> Production Medium </h5></div>
-    	  <div class="col-xs-10"><p> <%= title.medium %> </p></div>
+      	<div class="col-xs-6"><p> <strong>Length:</strong> <%= title.length %> minutes</p></div>
+        <div class="col-xs-6"><p> <strong>MPAA:</strong> <%= title.mpaa %> </p></div>
       </div>
       <div class="row">
-        <div class="col-xs-2"><h5> Production Sub-medium </h5></div>
-        <div class="col-xs-10"><p> <%= title.sub_medium %> </p></div>
+        <div class="col-xs-6"><p> <strong>Production Sub-medium:</strong> <%= title.sub_medium %> </p></div>
+        <div class="col-xs-6"><p> <strong>Genre:</strong> <%= title.genre %> </p></div>
       </div>
       <div class="row">
-        <div class="col-xs-2"><h5> Genre </h5></div>
-    	  <div class="col-xs-10"><p> <%= title.genre %> </p></div>
-  	  </div>
-      <div class="row">
-        <div class="col-xs-2"><h5> Description </h5></div>
-        <div class="col-xs-10"><p> <%= title.description %> </p></div>
+        <div class="col-xs-12"><p> <strong>Description:</strong> <%= title.description %> </p></div>
       </div>
+      <% if !current_user.nil? && current_user.admin? %>
+        <div class="col-xs-12"><p> <strong>Production Medium:</strong> <%= title.medium %>   |    <strong>Title Index:</strong> <%= title.title_index%>    |    <strong>Title Sort:</strong> <%= title.title_sort%>    |  <strong><%= link_to "DELETE", title, method: :delete, data: { confirm: "Are you sure you want to delete this title?" } %></strong></p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

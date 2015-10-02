@@ -84,7 +84,7 @@
   </div>
 </div>
 
-<div id="taglineCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" data-pause="hover">
+<div id="taglineCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
   <div class="carousel-inner" role="listbox">
     <% @taglines.shuffle.each_with_index do |tagline, index| %>
       <div class="item <% if index == 0 %> active <% end %>">
