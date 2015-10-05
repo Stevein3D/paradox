@@ -7,7 +7,7 @@
 
 <%= will_paginate %>
 
-<% @people.each do |person| %>
+<% @people.order(:last_name).each do |person| %>
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-3">
@@ -15,30 +15,28 @@
     </div>
     <div class="col-xs-9">
       <div class="row">
-      	<div class="col-xs-2"><h5> Full Name: </h5></div>
-    	  <div class="col-xs-10"><h4> <%= person.full_name %> </h4>
-          <% if !current_user.nil? && current_user.admin? %>
-          |  <%= link_to "delete", person, method: :delete, 
-                     data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </div>  	
+        <div class="col-xs-12"><h4> <%= person.full_name %></h4>
+          <br>
+        </div>    
       </div>
       <div class="row">
-      	<div class="col-xs-2"><h5> Birth Date </h5></div>
-    	  <div class="col-xs-10"><p> <%= person.birth_date %> </p></div>
+        <div class="col-xs-6"><p> <strong>Birth Date:</strong> <%= person.birth_date %> </p></div>
+        <% if person.death_date.nil? %>
+          <div class="col-xs-6"><p> <strong>Death Date:</strong> Still traveling </p></div>
+        <% else %>
+          <div class="col-xs-6"><p> <strong>Death Date:</strong> <%= person.death_date %> </p></div>
+        <% end %>
       </div>
       <div class="row">
-      	<div class="col-xs-2"><h5> Death Date </h5></div>
-    	  <div class="col-xs-10"><p> <%= person.death_date %> </p></div>
+        <div class="col-xs-12"><p> <strong>Best known for:</strong> <%= person.primary_skill %> </p></div>
       </div>
       <div class="row">
-        <div class="col-xs-2"><h5> Primary Skill </h5></div>
-    	  <div class="col-xs-10"><p> <%= person.primary_skill %> </p></div>
-  	  </div>
-      <div class="row">
-        <div class="col-xs-2"><h5> Biography </h5></div>
-        <div class="col-xs-10"><p> <%= person.biography %> </p></div>
+        <div class="col-xs-12"><p> <strong>Biography:</strong> <%= person.biography %> </p></div>
       </div>
+      <% if !current_user.nil? && current_user.admin? %>
+        <div class="col-xs-12"><p> <strong>Person Index:</strong> <%= person.people_index%>    |    <strong><%= link_to "DELETE", person, method: :delete, data: { confirm: "Are you sure you want to delete this title?" } %></strong></p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
