@@ -14,6 +14,10 @@ class TitlesController < ApplicationController
     @title = Title.find(params[:id])
   end
 
+  def edit
+    @title = Title.find(params[:id])
+  end
+
   def destroy
     Title.find(params[:id]).destroy
     flash[:success] = "Title deleted"
@@ -24,4 +28,23 @@ class TitlesController < ApplicationController
   	Title.import(params[:file])
   	redirect_to titles_url, notice: "File imported."
   end
+
+
+  def update
+    @title = Title.find(params[:id])
+      
+    if @title.update(title_params)
+        flash[:success] = "Entry updated!"
+      redirect_to @title
+    else
+      render 'edit'
+    end
+  end
+ 
+  private
+    def title_params
+      params.require(:title).permit(:title, :medium, :sub_medium, :country, :genre, :length, :mpaa, :description, :release_date, :release_day, 
+                                    :release_month, :release_year, :episode, :episode_num, :season_num, :title_sort, :season_index)
+    end
+
 end

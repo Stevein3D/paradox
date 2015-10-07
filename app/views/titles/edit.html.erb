@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_for(@title, method: :patch) do |f| %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control', rows: 10 %>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :medium %>
+          <%= f.text_field :medium, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :sub_medium %>
+          <%= f.text_field :sub_medium, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :country %>
+          <%= f.text_field :country, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :genre %>
+          <%= f.text_field :genre, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :length %>
+          <%= f.text_field :length, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :mpaa %>
+          <%= f.text_field :mpaa, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :release_date %>
+          <%= f.text_field :release_date, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :release_day %>
+          <%= f.text_field :release_day, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :release_month %>
+          <%= f.text_field :release_month, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :release_year %>
+          <%= f.text_field :release_year, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :episode %>
+          <%= f.text_field :episode, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :episode_num %>
+          <%= f.text_field :episode_num, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :title_sort %>
+          <%= f.text_field :title_sort, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :season_index %>
+          <%= f.text_field :season_index, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= f.submit "Update title entry", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get    'uploads'        => 'static_pages#uploads'
   get    'paradox_news'   => 'static_pages#paradox_news'
   get    'about'          => 'static_pages#about'
-  get    'blog'           => 'static_pages#blog'
   get    'contact'        => 'static_pages#contact'
   get    'signup'         => 'users#new'
   get    'login'          => 'sessions#new'
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :taglines, :doxes, :titles, :people, :events do
+  resources :taglines, :doxes, :titles, :people, :events, :blogposts do
     collection { post :import }
   end
   # resources :doxes do
