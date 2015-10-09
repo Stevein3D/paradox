@@ -2,7 +2,11 @@
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-3">
-    <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo img-responsive") %>
+      <% if !title.series_index.nil?%>
+        <%= cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class=>"profile-photo img-responsive") %>
+      <% else%>
+        <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo img-responsive") %>
+      <% end %>    
     </div>
     <div class="col-xs-9">
       <div class="row">

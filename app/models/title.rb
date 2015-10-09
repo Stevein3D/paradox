@@ -24,4 +24,8 @@ class Title < ActiveRecord::Base
       end # end if !product.nil?
     end # end CSV.foreach
   end # end self.import(file)
+
+  def releases?
+    self.exists?(release_month: Time.now.mon.to_i, release_day: Time.now.day.to_i)
+  end
 end

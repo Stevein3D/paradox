@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002162454) do
+ActiveRecord::Schema.define(version: 20151009184625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,11 @@ ActiveRecord::Schema.define(version: 20151002162454) do
     t.text     "biography"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.text     "birth_msg"
+    t.text     "death_msg"
+    t.string   "craft"
+    t.string   "profession"
+    t.integer  "title_index"
   end
 
   create_table "taglines", force: :cascade do |t|
@@ -107,7 +112,9 @@ ActiveRecord::Schema.define(version: 20151002162454) do
     t.integer  "episode_num"
     t.integer  "season_num"
     t.text     "title_sort"
-    t.string   "season_index"
+    t.string   "series_index"
+    t.text     "release_msg"
+    t.integer  "people_index"
   end
 
   create_table "users", force: :cascade do |t|
