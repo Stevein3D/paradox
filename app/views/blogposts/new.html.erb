@@ -1,0 +1,61 @@
+<%= form_for :blogpost, url: blogposts_path do |f| %>
+ 
+  <% if @blogpost.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@blogpost.errors.count, "error") %> prohibited
+        this post from being saved:
+      </h2>
+      <ul>
+        <% @blogpost.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+  	<div class="col-md-4">
+  	  <%= f.label :blog_index %>
+  	  <%= f.text_field :blog_index, class: 'form-control' %>
+  	</div>
+  </div>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :category %>
+      <%= f.text_field :category, class: 'form-control' %>
+    </div>
+	<div class="col-md-4">
+	  <%= f.label :subcategory %>
+	  <%= f.text_field :subcategory, class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+	  <%= f.label :date %>
+	  <%= f.text_field :date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.label :text %>
+  <%= f.text_area :text, class: 'form-control', rows: 15 %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :link %>
+      <%= f.text_field :link, class: 'form-control' %>
+    </div>
+	<div class="col-md-6">
+	  <%= f.label :picture %>
+	  <%= f.text_field :picture, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.submit "Create new post", class: "btn btn-primary" %>
+    
+<% end %>
+
+<br>
+
+<%= link_to 'Cancel', blogposts_path, class: "btn btn-default" %>

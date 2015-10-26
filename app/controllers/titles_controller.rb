@@ -1,5 +1,5 @@
 class TitlesController < ApplicationController
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:destroy, :update, :patch]
 
   def index
     @titles = Title.all
@@ -45,6 +45,10 @@ class TitlesController < ApplicationController
     def title_params
       params.require(:title).permit(:title, :medium, :sub_medium, :country, :genre, :length, :mpaa, :description, :release_date, :release_day, 
                                     :release_month, :release_year, :episode, :episode_num, :season_num, :title_sort, :season_index)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 
 end

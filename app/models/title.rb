@@ -1,8 +1,10 @@
 class Title < ActiveRecord::Base
   require 'csv'
 
+  scope :action, -> {where("genre ILIKE ?", "%ACT%")}
+
   def self.search(search, page)
-    order(:title_sort).where("cast(title_index as text) ILIKE ? OR medium ILIKE ? OR sub_medium ILIKE ? OR title ILIKE ? OR 
+    order("title_sort ASC, season_num ASC, episode_num ASC").where("cast(title_index as text) ILIKE ? OR medium ILIKE ? OR sub_medium ILIKE ? OR title ILIKE ? OR 
                           description ILIKE ? OR country ILIKE ? OR genre ILIKE ? OR length ILIKE ? OR mpaa ILIKE ? OR
                           release_date ILIKE ? OR cast(season_num as text) ILIKE ? OR cast(episode_num as text) ILIKE ? OR
                           episode ILIKE ? OR title_sort ILIKE ?", 

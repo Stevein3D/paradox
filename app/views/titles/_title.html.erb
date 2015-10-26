@@ -42,10 +42,13 @@
         <div class="col-xs-6"><p> <strong>Genre:</strong> <%= title.genre %> </p></div>
       </div>
       <div class="row">
+        <div class="col-xs-12"><p> <strong>Release Message:</strong> <%= title.release_msg %> </p></div>
+      </div>
+      <div class="row">
         <div class="col-xs-12"><p> <strong>Description:</strong> <%= title.description %> </p></div>
       </div>
       <% if !current_user.nil? && current_user.admin? %>
-        <div class="col-xs-12"><p> <strong>Production Medium:</strong> <%= title.medium %>   |    <strong>Title Index:</strong> <%= title.title_index%>    |    <strong>Title Sort:</strong> <%= title.title_sort%>    |  <strong><%= link_to "DELETE", title, method: :delete, data: { confirm: "Are you sure you want to delete this title?" } %></strong>    |  <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong></p>
+        <div class="admin-box col-xs-12"><p> <strong>Production Medium:</strong> <%= title.medium %>   |    <strong>Series Index:</strong> <%= title.series_index%>    |    <strong>Title Index:</strong> <%= title.title_index%>    |    <strong>Title Sort:</strong> <%= title.title_sort%>  |  <strong><%= link_to "DELETE", title, method: :delete, data: { confirm: "Are you sure you want to delete this title?" } %></strong>    |  <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong></p>
         </div>
       <% end %>
     </div>

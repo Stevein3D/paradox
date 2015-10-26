@@ -7,7 +7,7 @@
 
 <%= will_paginate %>
 
-<% @people.order(:last_name).each do |person| %>
+<% @people.order("last_name ASC, first_name ASC").each do |person| %>
   <%= render partial: "person", object: person %>
 <% end %>
 

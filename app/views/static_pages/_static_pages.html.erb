@@ -23,25 +23,25 @@
               <div class="row">
                 <% if event.event =~ /release/i %>
                     <% if title.sub_medium =~ /film/i %>
-                      <h2> On this day in <%= title.release_year %>, "<%= link_to title.title, title_path(title.id) %>" first opened in theaters.</h2>
+                      <h4> On this day in <%= title.release_year %>, "<%= link_to title.title, title_path(title.id) %>" first opened in theaters.</h4>
                     <% elsif title.sub_medium =~ /episode|comic/i %>
-                      <h2> On this day in <%= title.release_year %>, season <%= title.season_num %> of "<%= title.title %>" episode <%= title.episode_num %>: <i><%= link_to title.episode, title_path(title.id) %></i> was first broadcast.</h2>
+                      <h4> On this day in <%= title.release_year %>, season <%= title.season_num %> of "<%= title.title %>" episode <%= title.episode_num %>: <i><%= link_to title.episode, title_path(title.id) %></i> was first broadcast.</h4>
                     <% elsif title.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
-                      <h2> On this day in <%= title.release_year %>, "<%= link_to title.title, title_path(title.id) %>" premiered.</h2>
+                      <h4> On this day in <%= title.release_year %>, "<%= link_to title.title, title_path(title.id) %>" premiered.</h4>
                     <% elsif title.sub_medium =~ /book|novel|video game|video|short/i %>
-                      <h2> On this day in <%= title.release_year %>, "<%= link_to title.title, title_path(title.id) %>" was released.</h2>
+                      <h4> On this day in <%= title.release_year %>, "<%= link_to title.title, title_path(title.id) %>" was released.</h4>
                     <% end %>
                 <% elsif event.event =~ /birth/i %>
-                  <h2> Happy <%= person.age.ordinalize %> birthday, <%= link_to person.full_name, person_path(person.id) %>!</h2>
+                  <h4> Happy <%= person.age.ordinalize %> birthday, <%= link_to person.full_name, person_path(person.id) %>!</h4>
                 <% elsif event.event =~ /death/i %>
-                  <h2> <%= link_to person.full_name, person_path(person.id) %> died on this day in <%= person.death_year %>.</h2>
+                  <h4> <%= link_to person.full_name, person_path(person.id) %> died on this day in <%= person.death_year %>.</h4>
                 <% end %>
               </div>
               <div class="row">
                 <% if event.event_message.nil? %>
-                  <h2> Message coming soon. </h2>
+                  <h4> Message coming soon. </h4>
                 <% else %>
-                  <h2> <%= event.event_message %> </h2>
+                  <h4> <%= event.event_message %> </h4>
                 <% end %>
               </div>
             </div>

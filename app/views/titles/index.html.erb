@@ -5,9 +5,10 @@
   <% end %>
 </div>
 
+
 <%= will_paginate %>
 
-<% @titles.order(:title_sort).each do |title| %>
+<% @titles.order("title_sort ASC, season_num ASC, episode_num ASC").each do |title| %>
   <%= render partial: "title", object: title %>
 <% end %>
 
