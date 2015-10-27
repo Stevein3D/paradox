@@ -21,7 +21,7 @@
         <div class="col-xs-12"><p> <strong>Best known for:</strong> <%= person.primary_skill %> </p></div>
       </div>
       <div class="row">
-        <div class="col-xs-12"><p> <strong>Biography:</strong> <%= person.biography.html_safe %> </p></div>
+        <div class="col-xs-12"><p> <strong>Biography:</strong> <%= person.biography %> </p></div>
       </div>
       <% if !current_user.nil? && current_user.admin? %>
         <div class="col-xs-12"><p> <strong>Person Index:</strong> <%= person.people_index%>    |    <strong><%= link_to "DELETE", person, method: :delete, data: { confirm: "Are you sure you want to delete this title?" } %></strong>    |  <strong><%= link_to "EDIT", edit_person_path(person.id) %></strong></p></p>
