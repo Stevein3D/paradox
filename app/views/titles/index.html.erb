@@ -1,10 +1,16 @@
-<div class="container-fluid">
-  <%= form_tag(titles_path, :method => "get", id: "search-form") do %>
-  	<%= text_field_tag :search, params[:search], placeholder: "Search Titles" %>
-  	<%= submit_tag "Search" %>
-  <% end %>
-</div>
+<%= form_tag(titles_path, :method => "get", id: "search-form") do %>
+  <div class="row">
+    <div class="col-xs-10">
+      <%= text_field_tag :search, params[:search],  placeholder: "Search Paradoxes", autofocus: "autofocus" %>    
+	</div>
+	<div class="col-xs-2">
+      <%= submit_tag "Search" %>
+	</div>
+  </div>
+<% end %>
 
+
+<h2> <%= @titles.count %> total entries. </h2>
 
 <%= will_paginate %>
 
@@ -14,4 +20,3 @@
 
 <%= will_paginate %>
 
-<h2> <%= @titles.count %> total entries. </h2>

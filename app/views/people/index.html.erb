@@ -1,9 +1,16 @@
-<div class="container-fluid">
 <%= form_tag(people_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search People" %>
-<%= submit_tag "Search" %>
+  <div class="row">
+    <div class="col-xs-10">
+      <%= text_field_tag :search, params[:search],  placeholder: "Search Paradoxes", autofocus: "autofocus" %>    
+    </div>
+    <div class="col-xs-2">
+      <%= submit_tag "Search" %>
+    </div>
+  </div>
 <% end %>
-</div>
+
+
+<h2> <%= @people.count %> total entries. </h2>
 
 <%= will_paginate %>
 
@@ -13,4 +20,3 @@
 
 <%= will_paginate %>
 
-<h2> <%= @people.count %> total entries. </h2>
