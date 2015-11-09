@@ -1,16 +1,22 @@
-<%= form_tag(people_path, :method => "get", id: "search-form") do %>
-  <div class="row">
-    <div class="col-xs-10">
-      <%= text_field_tag :search, params[:search],  placeholder: "Search Paradoxes", autofocus: "autofocus" %>    
+<%= form_tag(people_path, :method => "get", :class => "inline", :style => "margin-bottom: 15px;", id: "search-form") do %>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <% if @people.count == 1 %>
+	    <strong><%= @people.count %></strong> total entry.
+	  <% else %>
+		<strong><%= @people.count %></strong> total entries.
+	  <% end %>
     </div>
-    <div class="col-xs-2">
-      <%= submit_tag "Search" %>
-    </div>
+    <%= text_field_tag :search, params[:search],:class => "form-control", placeholder: "Search Paradoxes", autofocus: "autofocus" %>
+    <div class="input-group-btn">
+	  <%= submit_tag "Search", class: "btn btn-primary" %>	
+	</div>
   </div>
 <% end %>
 
 
-<h2> <%= @people.count %> total entries. </h2>
+
+
 
 <%= will_paginate %>
 

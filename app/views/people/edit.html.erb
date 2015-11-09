@@ -26,43 +26,51 @@
         </div>
       </div>
 
-      <%= f.label :birth_date %>
-      <%= f.text_field :birth_date, class: 'form-control' %>
-
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
+          <%= f.label :birth_date %>
+          <%= f.text_field :birth_date, class: 'form-control' %>
+        </div>
+        <div class="col-md-3">
           <%= f.label :birth_day %>
           <%= f.text_field :birth_day, class: 'form-control' %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.label :birth_month %>
           <%= f.text_field :birth_month, class: 'form-control' %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.label :birth_year %>
           <%= f.text_field :birth_year, class: 'form-control' %>
         </div>
       </div>
 
-      <%= f.label :death_date %>
-      <%= f.text_field :death_date, class: 'form-control' %>
+      <%= f.label :birth_msg %>
+      <%= f.text_area :birth_msg, class: 'form-control', rows: 3 %>
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
+          <%= f.label :death_date %>
+          <%= f.text_field :death_date, class: 'form-control' %>
+        </div>
+        <div class="col-md-3">
           <%= f.label :death_day %>
           <%= f.text_field :death_day, class: 'form-control' %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.label :death_month %>
           <%= f.text_field :death_month, class: 'form-control' %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.label :death_year %>
           <%= f.text_field :death_year, class: 'form-control' %>
         </div>
       </div>
 
-      <%= f.submit "Update person entry", class: "btn btn-primary" %>
+      <%= f.label :death_msg %>
+      <%= f.text_area :death_msg, class: 'form-control', rows: 3 %>
+
+      <%= f.submit "Save", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -1,16 +1,18 @@
-
-<%= form_tag(doxes_path, :method => "get", id: "search-form") do %>
-<div class="row">
-  <div class="col-xs-10">
-    <%= text_field_tag :search, params[:search],  placeholder: "Search Paradoxes", autofocus: "autofocus" %>    
+<%= form_tag(doxes_path, :method => "get", :class => "inline", :style => "margin-bottom: 15px;", id: "search-form") do %>
+  <div class="input-group">
+    <div class="input-group-addon">
+      <% if @doxes.count == 1 %>
+        <strong><%= @doxes.count %></strong> total entry.
+      <% else %>
+        <strong><%= @doxes.count %></strong> total entries.
+      <% end %>
+    </div>
+    <%= text_field_tag :search, params[:search],:class => "form-control", placeholder: "Search Titles", autofocus: "autofocus" %>
+    <div class="input-group-btn">
+      <%= submit_tag "Search", class: "btn btn-primary" %>  
+    </div>
   </div>
-  <div class="col-xs-2">
-    <%= submit_tag "Search" %>
-  </div>
-</div>
 <% end %>
-
-<h2> <%= @doxes.count %> total entries. </h2>
 
 <%= will_paginate %>
 
@@ -18,12 +20,7 @@
 <div class="container-fluid dox-entry">
   <div class="row">
     <div class="col-xs-2"><h5> Paradox Name </h5></div>
-    <div class="col-xs-10"><h4> <%= dox.paradox_name %> </h4>
-      <% if !current_user.nil? && current_user.admin? %>
-          |  <%= link_to "delete", dox, method: :delete, 
-                     data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </div>
+    <div class="col-xs-10"><h4> <%= dox.paradox_name %> </h4></div>
   </div>
   <div class="row">
     <div class="col-xs-2"><h5> Paradox Brief </h5></div>
@@ -45,6 +42,11 @@
     <div class="col-xs-2"><h5> Example </h5></div>
     <div class="col-xs-10"><p> <%= dox.example %> </p></div>
   </div>
+  <% if !current_user.nil? && current_user.admin? %>
+    <div class="admin-box col-xs-12">
+      <p>  <strong><%= link_to "DELETE", dox, method: :delete, data: { confirm: "Are you sure you want to delete this paradox?" } %></strong>    |  <strong><%= link_to "EDIT", edit_dox_path(dox.id) %></strong></p>
+    </div>
+  <% end %>
 </div>
 <% end %>
 
