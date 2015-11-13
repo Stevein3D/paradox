@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   require 'time'
+
+  
+
   def index
     @today = Time.now
   	@taglines = Tagline.all
@@ -22,9 +25,6 @@ class StaticPagesController < ApplicationController
     
   end
 
-  def blog
-  end
-
   def contact
   end
 
@@ -34,7 +34,8 @@ class StaticPagesController < ApplicationController
   def paradox_news
   end
 
-  def paradoxes
+  def events
+    
   end
   
 end

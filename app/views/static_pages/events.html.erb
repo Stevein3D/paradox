@@ -1,0 +1,77 @@
+<% (Date.today..Date.today + 30.days).each do |date| %>
+  <h3><%= date.strftime("%B #{date.day.ordinalize}")%></h3>
+    <!-- All Titles for this date -->
+    <h4>Titles</h4>
+	<% Title.where("release_month = ? and release_day = ?", date.mon.to_i, date.day.to_i).each do |title| %>
+	  <div class="event-entry">
+	  	<div class="row">
+	  	  <div class="col-xs-1">
+	  	    <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %>	
+	  	  </div>
+	  	  <div class="col-xs-1">
+	  	    <%= cl_image_tag("People/" + title.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
+	  	  </div>
+          <div class="col-xs-9 col-xs-offset-1">
+      	    <strong>Title:</strong> <%= title.title%> | <strong>Title Index:</strong><%= title.title_index%> | 
+      	    <strong>Series Index:</strong> <%= title.series_index%> | <strong>People Index:</strong> <%= title.people_index%> | 
+      	    <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong>
+      	    <br>
+      	    <!-- Is the release message missing? -->
+            <% if title.release_msg.nil? %>
+              <div style="color:orange"><strong>Release Message:</strong> <%= title.release_msg%></div>
+            <% else %>
+              <strong>Release Message:</strong> <%= title.release_msg%>
+            <% end %>
+          </div>
+        </div>
+	  </div>
+	<% end %>
+	<!-- All Births for this date -->
+  <h4>Births</h4>
+	<% Person.where("birth_month = ? and birth_day = ?", date.mon.to_i, date.day.to_i).each do |birth| %>
+	  <div class="event-entry">
+	  	<div class="row">
+	  	  <div class="col-xs-1">
+	  	    <%= cl_image_tag("People/" + birth.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
+	  	  </div>
+	  	  <div class="col-xs-1">
+	  	    <%= cl_image_tag("Titles/" + birth.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %>	
+	  	  </div>
+          <div class="col-xs-9 col-xs-offset-1">
+      	    <strong>Name:</strong> <%= birth.full_name%> | <strong>People Index:</strong><%= birth.people_index%> | 
+      	    <strong>Title Index:</strong> <%= birth.title_index%> | <strong><%= link_to "EDIT", edit_person_path(birth.id) %></strong> 
+      	    <!-- Is the birth message missing? -->
+            <% if birth.birth_msg.nil? %>
+              <div style="color:orange"><strong>Birth Message:</strong> <%= birth.birth_msg%></div>
+            <% else %>
+              <strong>Death Message:</strong> <%= birth.birth_msg%>
+            <% end %>
+          </div>
+        </div>
+	  </div>
+	<% end %>
+	<!-- All Deaths for this date -->
+  <h4>Deaths</h4>
+    <% Person.where("death_month = ? and death_day = ?", date.mon.to_i, date.day.to_i).each do |death| %>
+	  <div class="event-entry">
+	  	<div class="row">
+	  	  <div class="col-xs-1">
+	  	    <%= cl_image_tag("People/" + death.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
+	  	  </div>
+	  	  <div class="col-xs-1">
+	  	    <%= cl_image_tag("Titles/" + death.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %>	
+	  	  </div>
+          <div class="col-xs-9 col-xs-offset-1">
+      	    <strong>Name:</strong> <%= death.full_name%> | <strong>People Index:</strong><%= death.people_index%> | 
+      	    <strong>Title Index:</strong> <%= death.title_index%> | <strong><%= link_to "EDIT", edit_person_path(death.id) %></strong> 
+      	    <!-- Is the death message missing? -->
+            <% if death.death_msg.nil? %>
+              <div style="color:orange"><strong>Death Message:</strong> <%= death.death_msg%></div>
+            <% else %>
+              <strong>Death Message:</strong> <%= death.death_msg%>
+            <% end %>
+          </div>
+        </div>
+	  </div>
+	<% end %>
+<% end %>
