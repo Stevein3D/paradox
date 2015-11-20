@@ -1,0 +1,72 @@
+          <!-- EVENT IS A RELEASE -->
+          <% if event.has_attribute?(:title) %>  
+            <div class="row">
+              <div class="col-xs-3 text-center">
+                <% if event.series_index.nil?%>
+                  <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
+                <% else %>
+                  <%= cl_image_tag("Titles/" + event.series_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
+                <% end %>
+              </div>
+              <div class="col-xs-6 text-center">
+                <div class="row">
+                  <% if event.sub_medium =~ /film/i %>
+                    <h4> On this day in <%= event.release_year %>, "<%= link_to event.title, title_path(event.id) %>" first opened in theaters.</h4>
+                  <% elsif event.sub_medium =~ /episode|comic/i %>
+                    <h4> On this day in <%= event.release_year %>, season <%= event.season_num %> of "<%= event.title %>" episode <%= event.episode_num %>: <i><%= link_to event.episode, title_path(event.id) %></i> was first broadcast.</h4>
+                  <% elsif event.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
+                      <h4> On this day in <%= event.release_year %>, "<%= link_to event.title, title_path(event.id) %>" premiered.</h4>
+                  <% elsif event.sub_medium =~ /book|novel|video game|video|short/i %>
+                      <h4> On this day in <%= event.release_year %>, "<%= link_to event.title, title_path(event.id) %>" was released.</h4>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <% if event.release_msg.nil? %>
+                    <h5> Message coming soon. </h5>
+                  <% else %>
+                    <h5> <%= event.release_msg %> </h5>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-xs-3 text-center">
+                <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
+              </div>
+            </div>
+          <!-- EVENT IS A PERSON -->
+          <% else %> 
+            <div class="row">
+              <div class="col-xs-3 text-center">
+                <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
+              </div>
+              <div class="col-xs-6 text-center">
+                <% if event.birth_month == Time.now.mon.to_i && event.birth_day == Time.now.day.to_i %>
+                <!-- EVENT IS A BIRTH -->
+                  <div class="row">
+                    <h4> Happy <%= event.age.ordinalize %> birthday, <%= link_to event.full_name, person_path(event.id) %>!</h4>
+                  </div>
+                  <div class="row">
+                    <% if event.birth_msg.nil? %>
+                      <h5> Message coming soon. </h5>
+                    <% else %>
+                      <h5> <%= event.birth_msg %> </h5>
+                    <% end %>
+                  </div>
+                <% else %>
+                <!-- EVENT IS A DEATH -->
+                  <div class="row">
+                    <h4> <%= link_to event.full_name, person_path(event.id) %> died on this day in <%= event.death_year %>.</h4>
+                  </div>
+                  <div class="row">
+                    <% if event.death_msg.nil? %>
+                      <h4> Message coming soon. </h4>
+                    <% else %>
+                      <h4> <%= event.death_msg %> </h4>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-xs-3 text-center">
+                <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
+              </div>
+            </div>
+          <% end %>

@@ -16,6 +16,6 @@ class DoxesController < ApplicationController
 
   def import
   	Dox.import(params[:file])
-  	redirect_to doxes_url, notice: "Paradoxes imported."
+  	redirect_to doxes_url, notice: "Paradoxes File Imported."
   end
 end

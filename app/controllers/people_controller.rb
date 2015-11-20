@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
 
   def import
   	Person.import(params[:file])
-  	redirect_to people_url, notice: "Paradoxes imported."
+  	redirect_to people_url, notice: "People File Imported."
   end
 
   def update

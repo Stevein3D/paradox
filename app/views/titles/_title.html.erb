@@ -3,9 +3,9 @@
   <div class="row">
     <div class="col-xs-3">
       <% if !title.series_index.nil?%>
-        <%= cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class=>"profile-photo img-responsive") %>
+        <%= cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class=>"profile-photo img-responsive", :alt => title.title) %>
       <% else%>
-        <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo img-responsive") %>
+        <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo img-responsive", :alt => title.title) %>
       <% end %>    
     </div>
     <div class="col-xs-9">

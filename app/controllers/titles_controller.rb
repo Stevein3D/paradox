@@ -26,7 +26,7 @@ class TitlesController < ApplicationController
 
   def import
   	Title.import(params[:file])
-  	redirect_to titles_url, notice: "File imported."
+  	redirect_to titles_url, notice: "Titles File Imported."
   end
 
 

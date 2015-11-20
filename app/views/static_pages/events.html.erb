@@ -13,8 +13,8 @@
 	  	  </div>
           <div class="col-xs-9 col-xs-offset-1">
       	    <strong>Title:</strong> <%= title.title%> | <strong>Title Index:</strong><%= title.title_index%> | 
-      	    <strong>Series Index:</strong> <%= title.series_index%> | <strong>People Index:</strong> <%= title.people_index%> | 
-      	    <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong>
+      	    <strong>Series Index:</strong> <%= title.series_index%> | <strong>People Index:</strong> <%= title.people_index%> |  
+      	    <strong>Release Date:</strong> <%= title.release_date%> | <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong>
       	    <br>
       	    <!-- Is the release message missing? -->
             <% if title.release_msg.nil? %>
@@ -39,7 +39,8 @@
 	  	  </div>
           <div class="col-xs-9 col-xs-offset-1">
       	    <strong>Name:</strong> <%= birth.full_name%> | <strong>People Index:</strong><%= birth.people_index%> | 
-      	    <strong>Title Index:</strong> <%= birth.title_index%> | <strong><%= link_to "EDIT", edit_person_path(birth.id) %></strong> 
+      	    <strong>Title Index:</strong> <%= birth.title_index%> | <strong>Birth Date:</strong> <%= birth.birth_date%> |
+      	     <strong><%= link_to "EDIT", edit_person_path(birth.id) %></strong> 
       	    <!-- Is the birth message missing? -->
             <% if birth.birth_msg.nil? %>
               <div style="color:orange"><strong>Birth Message:</strong> <%= birth.birth_msg%></div>
@@ -63,7 +64,8 @@
 	  	  </div>
           <div class="col-xs-9 col-xs-offset-1">
       	    <strong>Name:</strong> <%= death.full_name%> | <strong>People Index:</strong><%= death.people_index%> | 
-      	    <strong>Title Index:</strong> <%= death.title_index%> | <strong><%= link_to "EDIT", edit_person_path(death.id) %></strong> 
+      	    <strong>Title Index:</strong> <%= death.title_index%> | <strong>Death Date:</strong> <%= death.death_date%> |
+      	     <strong><%= link_to "EDIT", edit_person_path(death.id) %></strong> 
       	    <!-- Is the death message missing? -->
             <% if death.death_msg.nil? %>
               <div style="color:orange"><strong>Death Message:</strong> <%= death.death_msg%></div>
