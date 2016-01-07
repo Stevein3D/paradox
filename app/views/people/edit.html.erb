@@ -8,8 +8,16 @@
       <%= f.label :biography %>
       <%= f.text_area :biography, class: 'form-control', rows: 10 %>
 
-      <%= f.label :primary_skill %>
-      <%= f.text_field :primary_skill, class: 'form-control' %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.label :has_audio %>
+          <%= f.text_field :has_audio, class: 'form-control' %>
+        </div>
+        <div class="col-md-8">
+          <%= f.label :primary_skill %>
+          <%= f.text_field :primary_skill, class: 'form-control' %>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-md-4">

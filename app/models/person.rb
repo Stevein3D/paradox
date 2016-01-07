@@ -11,6 +11,7 @@ class Person < ActiveRecord::Base
     Date.today.year - self.birth_year
   end
 
+
   def self.import(file)
     CSV.foreach(file.path, headers: true, encoding: 'windows-1251:utf-8') do |row|
 
