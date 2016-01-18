@@ -39,3 +39,45 @@
 	padding-left: 10px;
 	padding-bottom: 10px;
 }
+.cube-container {
+
+	width: 500px;
+	height: 500px;
+}
+.cube-pieces {
+	background-image: image-url('cube.png');
+	background-size: 100% 100%;
+	font-size: 0;
+	margin: auto;
+	width: 300px;
+	height: 300px;
+}
+.cube-bit {
+	
+	height: 100px;
+	width: 100px;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+.ne-face:hover {
+    
+}
+.sw-face {
+
+}
+.origin-face {
+	
+}
+.bord-bot {
+	border-bottom: solid black 2px;
+}
+.bord-top {
+	border-top: solid black 2px;
+}
+.bord-rt {
+	border-right: solid black 2px;
+}
+.bord-lf {
+	border-left: solid black 2px;
+}

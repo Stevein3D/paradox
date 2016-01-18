@@ -2,7 +2,20 @@
   <h1>Welcome to Paradox Parkway</h1>
   <h3><%=@today.strftime("%A %B #{@today.day.ordinalize} %Y")%></h3>
 </div>
-
+<!-- Cube Experiment -->
+<!-- <div class="cube-container">
+  <div class="cube-pieces">
+    <div class="cube-bit"></div>
+    <div class="cube-bit ne-face bord-top bord-lf"></div>
+    <div class="cube-bit ne-face bord-top bord-rt"></div>
+    <div class="cube-bit sw-face bord-top bord-lf"></div>
+    <div class="cube-bit origin-face"></div>
+    <div class="cube-bit ne-face bord-rt bord-bot"></div>
+    <div class="cube-bit sw-face bord-bot bord-lf"></div>
+    <div class="cube-bit sw-face bord-rt bord-bot"></div>
+    <div class="cube-bit"></div>
+  </div>
+</div> -->
 <!-- Event Carousel -->
 <% if @events.nil? %>
 <% else %>
