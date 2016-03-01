@@ -11,21 +11,23 @@ $(document).ready(function(){
 
 	$(".ne-face")
 	  .mouseenter(function(){
-		$(".ne-face, .origin-face").animate({ backgroundColor: 'purple'}, 300);
+		$(".ne-face, .origin-face").animate({ backgroundColor: 'blue'}, 300);
+		$(".title-face").animate({color: 'white'}, 300);
 		$(".sw-face").animate({ backgroundColor: 'transparent'}, 300);
-	  })
-	  .mouseleave(function(){
-	  	
-	  });
+		$(".person-face").animate({color: 'transparent'}, 300);
+	});
 
 	$(".sw-face")
 	  .mouseenter(function(){
 		$(".sw-face, .origin-face").animate({ backgroundColor: 'green'}, 300);
+		$(".person-face").animate({color: 'white'}, 300);
 		$(".ne-face").animate({ backgroundColor: 'transparent'}, 300);
-	  })
-	  .mouseleave(function(){
-	  	
-	  });
+		$(".title-face").animate({color: 'transparent'}, 300);
+	});
 
+	$(".cube-container").mouseleave(function(){
+	  $(".sw-face, .ne-face, .origin-face").animate({ backgroundColor: 'transparent'}, 300);
+	  $(".title-face, .person-face").animate({color: 'transparent'}, 300);
+	});
 });
 

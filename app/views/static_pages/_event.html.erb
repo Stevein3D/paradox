@@ -43,6 +43,10 @@
                 <!-- EVENT IS A BIRTH -->
                   <div class="row">
                     <h4> Happy <%= event.age.ordinalize %> birthday, <%= link_to event.full_name, person_path(event.id) %>!</h4>
+                    <% if !event.death_year.nil? %>
+                        <h5>(Sadly <%= event.first_name%> passed away in <%= event.death_year %>.)</h5>
+                    <% else %>
+                    <% end %>
                   </div>
                   <div class="row">
                     <% if event.birth_msg.nil? %>

@@ -45,6 +45,7 @@
 	height: 500px;
 }
 .cube-pieces {
+	position: relative;
 	background-image: image-url('cube.png');
 	background-size: 100% 100%;
 	font-size: 0;
@@ -53,31 +54,23 @@
 	height: 300px;
 }
 .cube-bit {
-	
 	height: 100px;
 	width: 100px;
 	margin: 0;
 	padding: 0;
 	display: inline-block;
 }
-.ne-face:hover {
-    
+.title-face {
+	position: absolute;
+	top: 90px ;
+	left: 57% ;
+	text-decoration: none !important;
+	color: transparent;
 }
-.sw-face {
-
-}
-.origin-face {
-	
-}
-.bord-bot {
-	border-bottom: solid black 2px;
-}
-.bord-top {
-	border-top: solid black 2px;
-}
-.bord-rt {
-	border-right: solid black 2px;
-}
-.bord-lf {
-	border-left: solid black 2px;
+.person-face {
+	position: absolute;
+	top: 190px ;
+	left: 21% ;
+	text-decoration: none !important;
+	color: transparent;
 }

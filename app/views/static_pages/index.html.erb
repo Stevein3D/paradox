@@ -2,18 +2,22 @@
   <h1>Welcome to Paradox Parkway</h1>
   <h3><%=@today.strftime("%A %B #{@today.day.ordinalize} %Y")%></h3>
 </div>
+
+<!-- if (typeof $next == 'object' && $next.length) $next[0].offsetWidth // force reflow -->
 <!-- Cube Experiment -->
 <!-- <div class="cube-container">
   <div class="cube-pieces">
     <div class="cube-bit"></div>
-    <div class="cube-bit ne-face bord-top bord-lf"></div>
-    <div class="cube-bit ne-face bord-top bord-rt"></div>
-    <div class="cube-bit sw-face bord-top bord-lf"></div>
+    <%= link_to "", titles_path, class: "cube-bit ne-face" %>
+    <%= link_to "", titles_path, class: "cube-bit ne-face" %>
+    <%= link_to "", people_path, class: "cube-bit sw-face" %>
     <div class="cube-bit origin-face"></div>
-    <div class="cube-bit ne-face bord-rt bord-bot"></div>
-    <div class="cube-bit sw-face bord-bot bord-lf"></div>
-    <div class="cube-bit sw-face bord-rt bord-bot"></div>
+    <%= link_to "", titles_path, class: "cube-bit ne-face" %>
+    <%= link_to "", people_path, class: "cube-bit sw-face" %>
+    <%= link_to "", people_path, class: "cube-bit sw-face" %>
     <div class="cube-bit"></div>
+    <h4><%= link_to "TITLES", titles_path, class: "title-face" %></h4>
+    <h4><%= link_to "PEOPLE", people_path, class: "person-face" %></h4>
   </div>
 </div> -->
 <!-- Event Carousel -->
@@ -40,6 +44,7 @@
 <% end %>
 
   <!-- <%= link_to "Sign Up Now", signup_path, class: "btn btn-lg btn-primary" %> -->
+
 
 
 
