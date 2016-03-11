@@ -3,9 +3,11 @@
             <div class="row">
               <div class="col-xs-3 text-center">
                 <% if event.series_index.nil?%>
-                  <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
+                  <%= link_to cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class => "event-photo", :alt => event.title,
+                                                                                        :default_image => "Title:10000.png"), title_path(event.id) %>
                 <% else %>
-                  <%= cl_image_tag("Titles/" + event.series_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
+                  <%= link_to cl_image_tag("Titles/" + event.series_index.to_s + ".png", :class => "event-photo", :alt => event.title,
+                                                                                        :default_image => "Title:10000.png"), title_path(event.id) %>
                 <% end %>
               </div>
               <div class="col-xs-6 text-center">
@@ -36,13 +38,15 @@
           <% else %> 
             <div class="row">
               <div class="col-xs-3 text-center">
-                <%= cl_image_tag("People/" + event.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
+                <%= link_to cl_image_tag("People/" + event.people_index.to_s + ".png", :alt => event.full_name, :class => "event-photo", 
+                                                                                       :default_image => "People:40000.png"), person_path(event.id) %>
               </div>
               <div class="col-xs-6 text-center">
                 <% if event.birth_month == Time.now.mon.to_i && event.birth_day == Time.now.day.to_i %>
                 <!-- EVENT IS A BIRTH -->
                   <div class="row">
                     <h4> Happy <%= event.age.ordinalize %> birthday, <%= link_to event.full_name, person_path(event.id) %>!</h4>
+                    
                     <% if !event.death_year.nil? %>
                         <h5>(Sadly <%= event.first_name%> passed away in <%= event.death_year %>.)</h5>
                     <% else %>
@@ -70,7 +74,8 @@
                 <% end %>
               </div>
               <div class="col-xs-3 text-center">
-                <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class=>"event-photo", :default_image => "Titles:10000.png") %>
+                <%= cl_image_tag("Titles/" + event.title_index.to_s + ".png", :class => "event-photo", 
+                                                                                       :default_image => "Title:10000.png") %>
               </div>
             </div>
           <% end %>

@@ -6,7 +6,13 @@
 	  <div class="event-entry">
 	  	<div class="row">
 	  	  <div class="col-xs-1">
-	  	    <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %>	
+	  	    <% if title.series_index.nil?%>
+            <%= link_to cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class => "event-index-photo", :alt => title.title,
+                                                                                  :default_image => "Title:10000.png"), title_path(title.id) %>
+          <% else %>
+            <%= link_to cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class => "event-index-photo", :alt => title.title,
+                                                                                   :default_image => "Title:10000.png"), title_path(title.id) %>
+          <% end %>
 	  	  </div>
 	  	  <div class="col-xs-1">
 	  	    <%= cl_image_tag("People/" + title.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
