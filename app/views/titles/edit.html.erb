@@ -6,7 +6,10 @@
       <%= f.text_field :title, class: 'form-control' %>
 
       <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control', rows: 10 %>
+      <%= f.text_area :description, class: 'form-control', rows: 5 %>
+
+      <%= f.label :release_message %>
+      <%= f.text_area :release_message, class: 'form-control', rows: 5 %>
 
       <div class="row">
         <div class="col-md-6">
@@ -82,6 +85,17 @@
         <div class="col-md-6">
           <%= f.label :series_index %>
           <%= f.text_field :series_index, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :title_index %>
+          <%= f.text_field :title_index, class: 'form-control' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :people_index %>
+          <%= f.text_field :people_index, class: 'form-control' %>
         </div>
       </div>
 
