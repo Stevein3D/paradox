@@ -47,12 +47,6 @@
       	    <strong>Name:</strong> <%= birth.full_name%> | <strong>People Index:</strong><%= birth.people_index%> | 
       	    <strong>Title Index:</strong> <%= birth.title_index%> | <strong>Birth Date:</strong> <%= birth.birth_date%> |
       	     <strong><%= link_to "EDIT", edit_person_path(birth.id) %></strong> 
-      	    <!-- Is the birth message missing? -->
-            <% if birth.birth_msg.nil? %>
-              <div style="color:orange"><strong>Birth Message:</strong> <%= birth.birth_msg%></div>
-            <% else %>
-              <strong>Death Message:</strong> <%= birth.birth_msg%>
-            <% end %>
           </div>
         </div>
 	  </div>
@@ -72,12 +66,6 @@
       	    <strong>Name:</strong> <%= death.full_name%> | <strong>People Index:</strong><%= death.people_index%> | 
       	    <strong>Title Index:</strong> <%= death.title_index%> | <strong>Death Date:</strong> <%= death.death_date%> |
       	     <strong><%= link_to "EDIT", edit_person_path(death.id) %></strong> 
-      	    <!-- Is the death message missing? -->
-            <% if death.death_msg.nil? %>
-              <div style="color:orange"><strong>Death Message:</strong> <%= death.death_msg%></div>
-            <% else %>
-              <strong>Death Message:</strong> <%= death.death_msg%>
-            <% end %>
           </div>
         </div>
 	  </div>

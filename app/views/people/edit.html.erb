@@ -5,18 +5,25 @@
       <%= f.label :full_name %>
       <%= f.text_field :full_name, class: 'form-control' %>
 
+      <%= f.label :profession %>
+      <%= f.text_field :profession, class: 'form-control' %>
+
+      <%= f.label :nationality %>
+      <%= f.text_field :nationality, class: 'form-control' %>
+
       <%= f.label :biography %>
       <%= f.text_area :biography, class: 'form-control', rows: 5 %>
 
-      <%= f.label :primary_skill %>
-      <%= f.text_area :primary_skill, class: 'form-control', rows: 5 %>
-
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
+          <%= f.label :title_index %>
+          <%= f.text_field :title_index, class: 'form-control' %>
+        </div>
+        <div class="col-md-3">
           <%= f.label :has_audio %>
           <%= f.text_field :has_audio, class: 'form-control' %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <%= f.label :travels %>
           <%= f.text_field :travels, class: 'form-control' %>
         </div>
@@ -56,9 +63,6 @@
         </div>
       </div>
 
-      <%= f.label :birth_msg %>
-      <%= f.text_area :birth_msg, class: 'form-control', rows: 3 %>
-
       <div class="row">
         <div class="col-md-3">
           <%= f.label :death_date %>
@@ -77,9 +81,6 @@
           <%= f.text_field :death_year, class: 'form-control' %>
         </div>
       </div>
-
-      <%= f.label :death_msg %>
-      <%= f.text_area :death_msg, class: 'form-control', rows: 3 %>
 
       <%= f.submit "Save", class: "btn btn-primary" %>
     <% end %>

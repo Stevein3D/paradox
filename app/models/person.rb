@@ -3,8 +3,8 @@ class Person < ActiveRecord::Base
 
   def self.search(search, page)
     order("last_name ASC, first_name ASC").where("cast(people_index as text) ILIKE ? OR full_name ILIKE ? OR birth_date ILIKE ? OR 
-           death_date ILIKE ? OR primary_skill ILIKE ? OR biography ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", 
-           "%#{search}%", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 20)
+           death_date ILIKE ? OR nationality ILIKE ? OR biography ILIKE ? OR craft ILIKE ? OR profession ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", 
+           "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%").paginate(page: page, per_page: 20)
   end
 
   def age

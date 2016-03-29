@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311190829) do
+ActiveRecord::Schema.define(version: 20160325184810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,12 +63,10 @@ ActiveRecord::Schema.define(version: 20160311190829) do
     t.integer  "death_month"
     t.integer  "death_day"
     t.integer  "death_year"
-    t.text     "primary_skill"
+    t.text     "nationality"
     t.text     "biography"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.text     "birth_msg"
-    t.text     "death_msg"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "craft"
     t.string   "profession"
     t.integer  "title_index"

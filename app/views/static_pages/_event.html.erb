@@ -45,31 +45,30 @@
                 <% if event.birth_month == Time.now.mon.to_i && event.birth_day == Time.now.day.to_i %>
                 <!-- EVENT IS A BIRTH -->
                   <div class="row">
-                    <h4> Happy <%= event.age.ordinalize %> birthday, <%= link_to event.full_name, person_path(event.id) %>!</h4>
+                    <h4><%= link_to event.full_name, person_path(event.id) %>, <%= event.profession %>, was born on this day in <%= event.birth_year%>
+                      <% if !event.death_year.nil? %>
+                      (and sadly passed away in <%= event.death_year %>)
+                      <% else %>
+                      <% end %>
+                      .
+                    </h4>
+                    <!-- <h4> Happy <%= event.age.ordinalize %> birthday, <%= link_to event.full_name, person_path(event.id) %>!</h4>
                     
                     <% if !event.death_year.nil? %>
                         <h5>(Sadly <%= event.first_name%> passed away in <%= event.death_year %>.)</h5>
                     <% else %>
-                    <% end %>
+                    <% end %> -->
                   </div>
                   <div class="row">
-                    <% if event.birth_msg.nil? %>
-                      <h5> Message coming soon. </h5>
-                    <% else %>
-                      <h5> <%= event.birth_msg %> </h5>
-                    <% end %>
+                    <h5><%= event.travels.capitalize %>.</h5>
                   </div>
                 <% else %>
                 <!-- EVENT IS A DEATH -->
                   <div class="row">
-                    <h4> <%= link_to event.full_name, person_path(event.id) %> died on this day in <%= event.death_year %>.</h4>
+                    <h4> <%= link_to event.full_name, person_path(event.id) %>, <%=event.profession %>, died on this day in <%= event.death_year %>(and born in <%= event.birth_year %>).</h4>
                   </div>
                   <div class="row">
-                    <% if event.death_msg.nil? %>
-                      <h4> Message coming soon. </h4>
-                    <% else %>
-                      <h4> <%= event.death_msg %> </h4>
-                    <% end %>
+                    <h4> <%= event.travels.capitalize %>. </h4>
                   </div>
                 <% end %>
               </div>
