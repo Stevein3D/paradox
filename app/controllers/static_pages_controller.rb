@@ -10,17 +10,17 @@ class StaticPagesController < ApplicationController
     @births = Person.where("birth_month = ? and birth_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
     @deaths = Person.where("death_month = ? and death_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
 
-    @events = Title.none
+    @tits = Title.none
     if !@releases.nil?
-      @events = @events + @releases
+      @tits = @tits + @releases
     end
 
     if !@deaths.nil?
-      @events = @events + @deaths
+      @tits = @tits + @deaths
     end
 
     if !@births.nil?
-      @events = @events + @births
+      @tits = @tits + @births
     end
     
   end
@@ -34,7 +34,7 @@ class StaticPagesController < ApplicationController
   def paradox_news
   end
 
-  def events
+  def tits
     
   end
   

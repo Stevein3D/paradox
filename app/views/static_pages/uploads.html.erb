@@ -3,24 +3,29 @@
 <h3>Import a Paradox CSV File</h3>
 <%= form_tag import_doxes_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import Paradoxes" %>
+  <%= submit_tag "Import Paradoxes CSV" %>
 <% end %>
 
 <h3>Import a People CSV File</h3>
 <%= form_tag import_people_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import People" %>
+  <%= submit_tag "Import People CSV" %>
 <% end %>
 
 <h3>Import a Titles CSV File</h3>
 <%= form_tag import_titles_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import Titles" %>
+  <%= submit_tag "Import Titles CSV" %>
 <% end %>
 
 <h3>Import a Taglines CSV File</h3>
 <%= form_tag import_taglines_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import CSV" %>
+  <%= submit_tag "Import Tagline CSV" %>
 <% end %>
 
+<h3><strong>Import a Events CSV File</strong></h3>
+<%= form_tag import_events_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Events CSV" %>
+<% end %>

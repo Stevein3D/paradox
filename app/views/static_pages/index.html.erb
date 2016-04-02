@@ -21,13 +21,13 @@
   </div>
 </div> -->
 <!-- Event Carousel -->
-<% if @events.nil? %>
+<% if @tits.nil? %>
 <% else %>
   <div id="eventCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" data-pause="hover">
     <div class="carousel-inner" role="listbox">
-      <% @events.shuffle.each_with_index do |event, index| %>
+      <% @tits.shuffle.each_with_index do |tit, index| %>
         <div class="item <% if index == 0 %> active <% end %>">
-          <%= render partial: "event", object: event %>
+          <%= render partial: "tit", object: tit %>
         </div>
       <% end %>
     </div>

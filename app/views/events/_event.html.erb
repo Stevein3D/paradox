@@ -1,0 +1,17 @@
+<div class="container-fluid dox-entry">
+  <div class="row">
+      <div class="row">
+        <div class="col-xs-3"><p> <strong>Event Year</strong> <%= event.event_year %> </p></div>
+        <div class="col-xs-3"><p> <strong>To:</strong> <%= event.event_to %> </p></div>
+        <div class="col-xs-3"><p> <strong>Location:</strong> <%= event.event_location %> </p></div>
+      </div>
+      <% if !current_user.nil? && current_user.admin? %>
+        <div class="col-xs-12 admin-box">
+          <strong>Event Index:</strong> <%= event.event_index%>
+          <br>
+          <strong><%= link_to "DELETE", event, method: :delete, data: { confirm: "Are you sure you want to delete this event?" } %></strong>    |  <strong><%= link_to "EDIT", edit_event_path(event.id) %></strong></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

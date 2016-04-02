@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325184810) do
+ActiveRecord::Schema.define(version: 20160329223336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,22 @@ ActiveRecord::Schema.define(version: 20160325184810) do
   add_index "doxes", ["paradox_index"], name: "index_doxes_on_paradox_index", unique: true, using: :btree
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "event_index"
+    t.integer  "event_year",             limit: 8
+    t.string   "event_century"
+    t.integer  "event_month"
+    t.integer  "event_day"
+    t.integer  "event_hour"
+    t.integer  "event_minute"
+    t.integer  "event_second"
+    t.string   "event_period"
+    t.string   "event_to"
+    t.string   "event_location"
+    t.string   "event_historical_event"
+    t.string   "event_person"
+    t.text     "event_blurb"
   end
 
   create_table "people", force: :cascade do |t|
