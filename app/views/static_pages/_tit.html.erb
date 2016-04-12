@@ -26,7 +26,7 @@
                   <% if tit.release_msg.nil? %>
                     <h5> Message coming soon. </h5>
                   <% else %>
-                    <h5> <%= tit.release_msg %> </h5>
+                    <p> <%= tit.release_msg %> </p>
                   <% end %>
                 </div>
               </div>
@@ -45,13 +45,12 @@
                 <% if tit.birth_month == Time.now.mon.to_i && tit.birth_day == Time.now.day.to_i %>
                 <!-- EVENT IS A BIRTH -->
                   <div class="row">
-                    <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.profession %>, was born on this day in <%= tit.birth_year%>
-                      <% if !tit.death_year.nil? %>
-                      (and sadly passed away in <%= tit.death_year %>)
-                      <% else %>
-                      <% end %>
-                      .
-                    </h4>
+                    <% if !tit.death_year.nil? %>
+                      <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%> (and sadly passed away in <%= tit.death_year %>).</h4>
+                    <% else %>
+                      <h4>Happy <%=tit.age.ordinalize%> Birthday <%= link_to tit.full_name, person_path(tit.id) %></h4>
+                      <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%>.</h4>
+                    <% end %>
                   </div>
                   <div class="row">
                     <h5> <%= tit.travels %> </h5>
@@ -59,10 +58,10 @@
                 <% else %>
                 <!-- EVENT IS A DEATH -->
                   <div class="row">
-                    <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%=tit.profession %>, died on this day in <%= tit.death_year %>(and born in <%= tit.birth_year %>).</h4>
+                    <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%=tit.profession %>, died on this day in <%= tit.death_year %> (and was born in <%= tit.birth_year %>).</h4>
                   </div>
                   <div class="row">
-                    <h4> <%= tit.travels %> </h4>
+                    <h5> <%= tit.travels %> </h5>
                   </div>
                 <% end %>
               </div>
