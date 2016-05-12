@@ -1,6 +1,43 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.hidden { display: none; }
+
+/*flash*/
+
+.alert-error {
+background-color: #f2dede;
+border-color: #eed3d7;
+color: #b94a48;
+text-align: left;
+}
+
+.alert-alert {
+background-color: #f2dede;
+border-color: #eed3d7;
+color: #b94a48;
+text-align: left;
+}
+
+.alert-success {
+background-color: #dff0d8;
+border-color: #d6e9c6;
+color: #468847;
+text-align: left;
+}
+
+.alert-notice {
+background-color: #dff0d8;
+border-color: #d6e9c6;
+color: #468847;
+text-align: left;
+}
+
+text {
+  color: white;
+}
+
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -11,10 +48,16 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-/* universal */
+/////////////* universal *//////////////
+
+.hamburger {
+  width: 100px;
+}
 
 body {
+  width: 100%;
   padding-top: 60px;
+  background-color: black;
 }
 
 section {
@@ -68,7 +111,7 @@ p {
 
 /* header */
 
-#logo {
+#paradox {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -78,7 +121,7 @@ p {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-  	color: white;
+    color: white;
     text-decoration: none;
   }
 }

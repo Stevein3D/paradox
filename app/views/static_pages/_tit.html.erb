@@ -1,73 +1,118 @@
-          <!-- EVENT IS A RELEASE -->
-          <% if tit.has_attribute?(:title) %>  
-            <div class="row">
-              <div class="col-xs-3 text-center">
-                <% if tit.series_index.nil?%>
-                  <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :class => "event-photo", :alt => tit.title,
-                                                                                        :default_image => "Title:10000.png"), title_path(tit.id) %>
-                <% else %>
-                  <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :class => "event-photo", :alt => tit.title,
-                                                                                        :default_image => "Title:10000.png"), title_path(tit.id) %>
-                <% end %>
-              </div>
-              <div class="col-xs-6 text-center">
-                <div class="row">
-                  <% if tit.sub_medium =~ /film/i %>
-                    <h4> On this day in <%= tit.release_year %>, "<%= link_to tit.title, title_path(tit.id) %>" first opened in theaters.</h4>
-                  <% elsif tit.sub_medium =~ /episode|comic/i %>
-                    <h4> On this day in <%= tit.release_year %>, season <%= tit.season_num %> of "<%= tit.title %>" episode <%= tit.episode_num %>: <i><%= link_to tit.episode, title_path(tit.id) %></i> was first broadcast.</h4>
-                  <% elsif tit.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
-                      <h4> On this day in <%= tit.release_year %>, "<%= link_to tit.title, title_path(tit.id) %>" premiered.</h4>
-                  <% elsif tit.sub_medium =~ /book|novel|video game|video|short/i %>
-                      <h4> On this day in <%= tit.release_year %>, "<%= link_to tit.title, title_path(tit.id) %>" was released.</h4>
-                  <% end %>
-                </div>
-                <div class="row">
-                  <% if tit.release_msg.nil? %>
-                    <h5> Message coming soon. </h5>
-                  <% else %>
-                    <p> <%= tit.release_msg %> </p>
-                  <% end %>
-                </div>
-              </div>
-              <div class="col-xs-3 text-center">
-                <%= cl_image_tag("People/" + tit.people_index.to_s + ".png", :class=>"event-photo", :default_image => "People:40000.png") %>
-              </div>
-            </div>
-          <!-- EVENT IS A PERSON -->
-          <% else %> 
-            <div class="row">
-              <div class="col-xs-3 text-center">
-                <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "event-photo", 
-                                                                                       :default_image => "People:40000.png"), person_path(tit.id) %>
-              </div>
-              <div class="col-xs-6 text-center">
-                <% if tit.birth_month == Time.now.mon.to_i && tit.birth_day == Time.now.day.to_i %>
-                <!-- EVENT IS A BIRTH -->
-                  <div class="row">
-                    <% if !tit.death_year.nil? %>
-                      <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%> (and sadly passed away in <%= tit.death_year %>).</h4>
-                    <% else %>
-                      <h4>Happy <%=tit.age.ordinalize%> Birthday <%= link_to tit.full_name, person_path(tit.id) %></h4>
-                      <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%>.</h4>
-                    <% end %>
-                  </div>
-                  <div class="row">
-                    <h5> <%= tit.travels %> </h5>
-                  </div>
-                <% else %>
-                <!-- EVENT IS A DEATH -->
-                  <div class="row">
-                    <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%=tit.profession %>, died on this day in <%= tit.death_year %> (and was born in <%= tit.birth_year %>).</h4>
-                  </div>
-                  <div class="row">
-                    <h5> <%= tit.travels %> </h5>
-                  </div>
-                <% end %>
-              </div>
-              <div class="col-xs-3 text-center">
-                <%= cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :class => "event-photo", 
-                                                                                       :default_image => "Title:10000.png") %>
-              </div>
-            </div>
+<div class="container-fluid">
+<% if tit.has_attribute?(:title) %>
+  <!-- EVENT IS A RELEASE -->
+  <div class="row center">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-images">
+      <% if tit.series_index.nil?%>
+        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Title:10000.png"), title_path(tit.id) %>
+      <% else %>
+        <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Title:10000.png"), title_path(tit.id) %>
+      <% end %>
+
+
+      <!-- CHECK IF TITLE IS USING DEFAULT IMAGE FOR RELATED PERSON -->
+      <% if tit.people_index == 40000 %>
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(tit.id) %>
+      <% else %>
+        <% titlePerson = Person.find_by people_index: tit.people_index %>
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), person_path(titlePerson.id) %>
+      <% end %>
+    </div>
+    
+  </div>
+
+  <!-- CHECK TYPE OF RELEASE -->
+  <div class="row center ">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-text">
+      <div class="tit-textbox">
+         
+        <h4>On this day in <%= tit.release_year %>,
+          <% if tit.sub_medium =~ /film/i %>
+             "<%= link_to tit.title, title_path(tit.id) %>" first opened in theaters.
+        
+          <% elsif tit.sub_medium =~ /episode|comic/i %>
+          season <%= tit.season_num %> of "<%= tit.title %>" episode <%= tit.episode_num %>: <i><%= link_to tit.episode, title_path(tit.id) %></i> was first broadcast.
+        
+          <% elsif tit.sub_medium =~ /tv series|tv miniseries|tv movie/i %>
+            "<%= link_to tit.title, title_path(tit.id) %>" premiered.
+        
+          <% elsif tit.sub_medium =~ /book|novel|video game|video|short/i %>
+            <%= tit.release_year %>, <br> "<%= link_to tit.title, title_path(tit.id) %>" was released.
+        
           <% end %>
+        </h4>
+      <!-- CHECK IF RELEASE MESSAGE EXISTS -->
+      
+        <% if tit.release_msg.nil? %>
+          <h4> Message coming soon. </h4>
+
+        <% else %>
+          <h4> <%= tit.release_msg %> </h4>
+
+        <% end %>
+      </div>
+    </div>
+    <span class="col-3-sm"></span>
+  </div>  
+
+  <% else %> 
+  <!-- EVENT IS A PERSON-->
+
+  <div class="row center">
+    <div class="col-sm-offset-1 col-sm-10  col-md-offset-3 col-md-6 tit-images">
+      <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo left-tit-image", 
+                                                                           :default_image => "People:10000.png"), person_path(tit.id) %>
+      <!-- NO TITLE ENTERED FOR THIS PERSON -->
+      <% if tit.title_index == 10000 %>
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Title:10000.png"), person_path(tit.id) %>
+
+      <!-- LINK TO RELATED TITLE FOR THIS PERSON -->
+      <% else %>
+        <% personTitle = Title.find_by title_index: tit.title_index %>
+        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :alt => personTitle.title, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(personTitle.id) %>
+
+      <% end %>
+    </div>
+  </div>                
+  <!-- EVENT IS A BIRTH -->
+  <% if tit.birth_month == Time.now.mon.to_i && tit.birth_day == Time.now.day.to_i %>
+
+    <div class="row center">
+      <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-text">
+        <div class="tit-textbox">
+        
+          <% if !tit.death_year.nil? %>
+          <!-- PERSON WAS BORN TODAY BUT IS DEAD -->
+
+            <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%> (and sadly passed away in <%= tit.death_year %>).
+            </h4>
+
+          <% else %>
+          <!-- PERSON WAS BORN TODAY AND STILL ALIVE -->
+
+            <h4>Happy <%=tit.age.ordinalize%> Birthday, <%= link_to tit.full_name, person_path(tit.id) %>!</h4>
+            <h4><%= tit.full_name %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%>.
+            </h4>
+          <% end %>
+
+          <h5> <%= tit.travels %> </h5>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+  <!-- EVENT IS A DEATH -->
+
+    <div class="row center">
+      <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 tit-text">
+        <div class="tit-textbox">
+          <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%=tit.profession %>, died on this day in <%= tit.death_year %> (and was born in <%= tit.birth_year %>).
+          </h4>
+          <h5> <%= tit.travels %> </h5>
+        </div>
+      </div>  
+    </div>
+  <% end %>
+
+<% end %>
+</div>

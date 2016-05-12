@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post   'login'          => 'sessions#create'
   delete 'logout'         => 'sessions#destroy'
   
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+  resources "contacts", only: [:new, :create]
+  
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

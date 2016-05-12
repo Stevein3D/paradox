@@ -29,5 +29,12 @@ $(document).ready(function(){
 	  $(".sw-face, .ne-face, .origin-face").animate({ backgroundColor: 'transparent'}, 300);
 	  $(".title-face, .person-face").animate({color: 'transparent'}, 300);
 	});
+
+	$('.video-thumb').click(function(){
+		var $url = $(this).attr('id');
+		$('iframe').attr('src',"http://player.vimeo.com/video/" + $url + "?autoplay=1");
+	});
+
+
 });
 

@@ -10,6 +10,8 @@ class StaticPagesController < ApplicationController
     @births = Person.where("birth_month = ? and birth_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
     @deaths = Person.where("death_month = ? and death_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
 
+    @montages = Vimeo::Simple::Album.videos("3931279")
+
     @tits = Title.none
     if !@releases.nil?
       @tits = @tits + @releases
@@ -25,7 +27,19 @@ class StaticPagesController < ApplicationController
     
   end
 
-  def contact
+  def new
+    @contact = Contact.new
+  end
+
+  def create
+    @contact = Contact.new(params[:contact])
+    @contact.request = request
+    if @contact.deliver
+      flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
+    else
+      flash.now[:error] = 'Cannot send message.'
+      render :new
+    end
   end
 
   def paradox_people
