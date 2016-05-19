@@ -1,30 +1,36 @@
-<% (Date.today..Date.today + 30.days).each do |date| %>
+<% (Date.today..Date.today + 3.days).each do |date| %>
   <h3><%= date.strftime("%B #{date.day.ordinalize}")%></h3>
     <!-- All Titles for this date -->
     <h4>Titles</h4>
 	<% Title.where("release_month = ? and release_day = ?", date.mon.to_i, date.day.to_i).each do |title| %>
 	  <div class="event-entry">
 	  	<div class="row">
-	  	  <div class="col-xs-1">
+	  	  <div class="col-xs-3">
 	  	    <% if title.series_index.nil?%>
+
             <%= link_to cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Title:10000.png"), title_path(title.id) %>
+
           <% else %>
+
             <%= link_to cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Title:10000.png"), title_path(title.id) %>
+
           <% end %>
+
+          <%= cl_image_tag("People/" + title.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>  
+
 	  	  </div>
-	  	  <div class="col-xs-1">
-	  	    <%= cl_image_tag("People/" + title.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
-	  	  </div>
-          <div class="col-xs-9 col-xs-offset-1">
-      	    <strong>Title:</strong> <%= title.title%> | <strong>Title Index:</strong><%= title.title_index%> | 
-      	    <strong>Series Index:</strong> <%= title.series_index%> | <strong>People Index:</strong> <%= title.people_index%> |  
-      	    <strong>Release Date:</strong> <%= title.release_date%> | <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong>
+          <div class="col-xs-8 col-xs-offset-1">
+      	    <h4>
+                Title:        <%= title.title%>        | Title Index:  <%= title.title_index%>  | <br>
+      	        Series Index: <%= title.series_index%> | People Index: <%= title.people_index%> | <br> 
+      	        Release Date: <%= title.release_date%> | <%= link_to "EDIT", edit_title_path(title.id) %> 
+            </h4>
       	    <br>
       	    <!-- Is the release message missing? -->
             <% if title.release_msg.nil? %>
               <div style="color:orange"><strong>Release Message:</strong> <%= title.release_msg%></div>
             <% else %>
-              <strong>Release Message:</strong> <%= title.release_msg%>
+              <h5>Release Message: <%= title.release_msg%> </h5>
             <% end %>
           </div>
         </div>
@@ -35,16 +41,16 @@
 	<% Person.where("birth_month = ? and birth_day = ?", date.mon.to_i, date.day.to_i).each do |birth| %>
 	  <div class="event-entry">
 	  	<div class="row">
-	  	  <div class="col-xs-1">
+	  	  <div class="col-xs-3">
 	  	    <%= cl_image_tag("People/" + birth.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
+          <%= cl_image_tag("Titles/" + birth.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %> 
 	  	  </div>
-	  	  <div class="col-xs-1">
-	  	    <%= cl_image_tag("Titles/" + birth.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %>	
-	  	  </div>
-          <div class="col-xs-9 col-xs-offset-1">
-      	    <strong>Name:</strong> <%= birth.full_name%> | <strong>People Index:</strong><%= birth.people_index%> | 
-      	    <strong>Title Index:</strong> <%= birth.title_index%> | <strong>Birth Date:</strong> <%= birth.birth_date%> |
-      	     <strong><%= link_to "EDIT", edit_person_path(birth.id) %></strong> 
+          <div class="col-xs-8 col-xs-offset-1">
+      	    <h4>
+                Name:        <%= birth.full_name%>   | People Index: <%= birth.people_index%> | <br>
+      	        Title Index: <%= birth.title_index%> | Birth Date:   <%= birth.birth_date%>   | <br>
+      	        <%= link_to "EDIT", edit_person_path(birth.id) %> 
+            </h4>
           </div>
         </div>
 	  </div>
@@ -54,16 +60,16 @@
     <% Person.where("death_month = ? and death_day = ?", date.mon.to_i, date.day.to_i).each do |death| %>
 	  <div class="event-entry">
 	  	<div class="row">
-	  	  <div class="col-xs-1">
+	  	  <div class="col-xs-3">
 	  	    <%= cl_image_tag("People/" + death.people_index.to_s + ".png", :class=>"event-index-photo", :default_image => "People:40000.png") %>	
+          <%= cl_image_tag("Titles/" + death.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %> 
 	  	  </div>
-	  	  <div class="col-xs-1">
-	  	    <%= cl_image_tag("Titles/" + death.title_index.to_s + ".png", :class=>"event-index-photo", :default_image => "Titles:10000.png") %>	
-	  	  </div>
-          <div class="col-xs-9 col-xs-offset-1">
-      	    <strong>Name:</strong> <%= death.full_name%> | <strong>People Index:</strong><%= death.people_index%> | 
-      	    <strong>Title Index:</strong> <%= death.title_index%> | <strong>Death Date:</strong> <%= death.death_date%> |
-      	     <strong><%= link_to "EDIT", edit_person_path(death.id) %></strong> 
+          <div class="col-xs-8 col-xs-offset-1">
+      	    <h4>
+                 Name:        <%= death.full_name%>   | People Index: <%= death.people_index%> | <br>
+      	         Title Index: <%= death.title_index%> | Death Date:   <%= death.death_date%>   | <br>
+      	         <%= link_to "EDIT", edit_person_path(death.id) %> 
+            </h4>
           </div>
         </div>
 	  </div>

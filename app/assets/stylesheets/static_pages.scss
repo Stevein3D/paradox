@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Interstate-Bold';
-  src:url('Interstate-Bold.ttf');
+  src: font-url('Interstate-Bold.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -200,13 +200,15 @@ h3 {
 	padding-top: 10px;
 	padding-bottom: 15px;
 }
-.event-index-photo {
-	max-width: 100px;
-	padding: 0 15px 15px 0;
-}
 .event-entry {
+	background-color: #1d2330;
 	padding-left: 10px;
 	padding-bottom: 10px;
+	margin: 5px 0 10px 0;
+}
+.event-index-photo {
+	max-width: 150px;
+	padding: 10px 15px 15px 0;
 }
 .cube-container {
 
