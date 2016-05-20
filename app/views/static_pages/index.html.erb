@@ -2,32 +2,28 @@
   <div class="nav-box">
     <div class="nav-left-buttons">
 
-      <button class="pp-button">
-        <%= link_to "PARADOXES", doxes_path %>
-      </button>
-      <button class="pp-button">
-        <%= link_to "PEOPLE", people_path %>
-      </button>
-      <button class="pp-button">
-        <%= link_to "TITLES", titles_path %>
-      </button>
+      <%= link_to "<h5>PARADOXES</h5>".html_safe, doxes_path,  class: "pp-button" %>
+
+      <%= link_to "<h5>PEOPLE</h5>".html_safe,    people_path, class: "pp-button" %>
+
+      <%= link_to "<h5>TITLES</h5>".html_safe,    titles_path, class: "pp-button" %>
       
     </div>
 
     <%= link_to image_tag("PPlogo.png", class: "logo-img", alt: "Paradox Parkway"), root_path%>  
 
     <div class="nav-right-buttons">
-      <button class="pp-button">
-        <%= link_to "CONTACT", contact_path %>
-      </button>
-      <button class="pp-button">
-        <%= link_to "BLOG", blogposts_path %>
-      </button>
-      <button class="pp-button">
-        <%= link_to "JOIN", signup_path %>
-      </button>
+
+      <%= link_to "<h5>CONTACT</h5>".html_safe, contacts_path,  class: "pp-button" %>
+
+      <%= link_to "<h5>BLOG</h5>".html_safe,    blogposts_path, class: "pp-button" %>
+
+      <%= link_to "<h5>JOIN</h5>".html_safe,    signup_path,    class: "pp-button" %>
+
     </div>
+
     <h2>Welcome to Paradox Parkway</h2>
+
   </div>
   
 </div>

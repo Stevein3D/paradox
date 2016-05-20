@@ -4,9 +4,9 @@
   <div class="row center">
     <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-images">
       <% if tit.series_index.nil?%>
-        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Title:10000.png"), title_path(tit.id) %>
+        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
       <% else %>
-        <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Title:10000.png"), title_path(tit.id) %>
+        <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
       <% end %>
 
 
@@ -61,10 +61,10 @@
   <div class="row center">
     <div class="col-sm-offset-1 col-sm-10  col-md-offset-3 col-md-6 tit-images">
       <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo left-tit-image", 
-                                                                           :default_image => "People:10000.png"), person_path(tit.id) %>
+                                                                           :default_image => "People:40000.png"), person_path(tit.id) %>
       <!-- NO TITLE ENTERED FOR THIS PERSON -->
       <% if tit.title_index == 10000 %>
-        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Title:10000.png"), person_path(tit.id) %>
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Titles:10000.png"), person_path(tit.id) %>
 
       <!-- LINK TO RELATED TITLE FOR THIS PERSON -->
       <% else %>

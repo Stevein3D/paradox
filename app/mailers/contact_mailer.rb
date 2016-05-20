@@ -3,6 +3,6 @@ class ContactMailer < ApplicationMailer
 	
 	def visitor_email(visitor)
 		@visitor = visitor
-		mail(to: "stevein3d@gmail.com", subject: "Saying Hello")
+		mail(to: "steve@paradoxparkway.com", subject: "Saying Hello")
 	end
 end

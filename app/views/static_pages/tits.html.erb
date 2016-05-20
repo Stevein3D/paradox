@@ -8,11 +8,11 @@
 	  	  <div class="col-xs-3">
 	  	    <% if title.series_index.nil?%>
 
-            <%= link_to cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Title:10000.png"), title_path(title.id) %>
+            <%= link_to cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Titles:10000.png"), title_path(title.id) %>
 
           <% else %>
 
-            <%= link_to cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Title:10000.png"), title_path(title.id) %>
+            <%= link_to cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Titles:10000.png"), title_path(title.id) %>
 
           <% end %>
 
@@ -32,6 +32,7 @@
             <% else %>
               <h5>Release Message: <%= title.release_msg%> </h5>
             <% end %>
+
           </div>
         </div>
 	  </div>
@@ -51,6 +52,11 @@
       	        Title Index: <%= birth.title_index%> | Birth Date:   <%= birth.birth_date%>   | <br>
       	        <%= link_to "EDIT", edit_person_path(birth.id) %> 
             </h4>
+
+            <% if !Title.exists?(title_index: birth.title_index) %>
+              <h5 style="color:red "> <%= birth.title_index %> does not have a title record in the DB !!!</h5>
+            <% end %>
+
           </div>
         </div>
 	  </div>
@@ -70,6 +76,11 @@
       	         Title Index: <%= death.title_index%> | Death Date:   <%= death.death_date%>   | <br>
       	         <%= link_to "EDIT", edit_person_path(death.id) %> 
             </h4>
+
+            <% if !Title.exists?(title_index: death.title_index) %>
+              <h5 style="color:red "> <%= death.title_index %> does not have a title record in the DB !!!</h5>
+            <% end %>
+
           </div>
         </div>
 	  </div>

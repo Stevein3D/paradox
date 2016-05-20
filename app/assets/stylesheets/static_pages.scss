@@ -37,13 +37,17 @@
 	display: block;
 	width: 120px;
 	height: 40px;
+	border: 2px solid #b8b8c7;
 	border-radius: 10px;
 	margin: 15px 0 20px 0;
 }
-.pp-button a {
+
+.pp-button h5 {
+	line-height: 40px;
 	text-decoration: none;
 	color: white;
 	font-family: 'Interstate-Bold';
+	margin-top: 0;
 }
 
 .logo-img {
