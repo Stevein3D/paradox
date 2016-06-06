@@ -24,6 +24,14 @@ class StaticPagesController < ApplicationController
     if !@births.nil?
       @tits = @tits + @births
     end
+
+    @welcomeText = ["Your gateway to the 4th dimension...", "It's all in the mind, you know...",
+                    "Your one stop for this sort of thing!", "Your Time Travel Agency...",
+                    "If you’re confused and off-balance – you are home...", 
+                    "Take a number.  We’ll be with you between now and eternity...",
+                    "Your home for illusion, delusion, and confusion...", "Where infinity begins and ends...",
+                    "The Land Beyond The Land Beyond...", "Where it’s always now, now...",
+                    "Welcome to Never Say Never Land!"]
     
   end
 

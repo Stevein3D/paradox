@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329223336) do
+ActiveRecord::Schema.define(version: 20160602213052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160329223336) do
     t.string   "series_index"
     t.text     "release_msg"
     t.integer  "people_index"
+    t.boolean  "has_audio"
   end
 
   create_table "users", force: :cascade do |t|

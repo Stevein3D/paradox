@@ -1,18 +1,22 @@
 <% provide(:title, 'Contact')%>
 
-<div align="center">
-  <h3>Send A message to Us</h3>
-
-  <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-    <%= f.input :name, :required => true %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :message, :as => :text, :required => true %>
-    <div class= "hidden">
-      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+<div class="fluid-container">
+  <div class="row ">
+    <div class="col-xs-8 col-xs-offset-2 contact-form">
+    <h3 style= "display:inline"> First Contact </h3> <h4 style= "display:inline"> (with the Parkway) </h4>
+      <br><br>
+      <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+        <%= f.input :name, :label => "<h4>Your name:</h4>".html_safe, :required => true %>
+        <%= f.input :email, :label => "<h4>Your email:</h4>".html_safe, :required => true %>
+        <%= f.input :message, :label => "<h4>What's on your mind?</h4>".html_safe, :as => :text, :input_html => {rows: 5}, :required => true %>
+        <div class= "hidden">
+          <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+        </div>
+        <div>
+          </br>
+          <%= f.button :submit, "Send it!", :class=> "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-    <div>
-      </br>
-      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>

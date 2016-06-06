@@ -43,8 +43,10 @@ class TitlesController < ApplicationController
  
   private
     def title_params
-      params.require(:title).permit(:title, :medium, :sub_medium, :country, :genre, :length, :mpaa, :description, :release_date, :release_day, 
-                                    :release_month, :release_year, :release_message, :episode, :episode_num, :season_num, :title_sort, :series_index, :people_index)
+      params.require(:title).permit(:title, :medium, :sub_medium, :country, :genre, :length, :mpaa, 
+                                    :description, :release_date, :release_day, :release_month, :release_year, 
+                                    :release_msg, :episode, :episode_num, :season_num, :title_sort, 
+                                    :series_index, :people_index, :title_index, :has_audio)
     end
 
     def admin_user
