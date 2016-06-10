@@ -237,8 +237,10 @@ h3 {
 }
 
 .profile-photo {
-	padding-top: 10px;
-	padding-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7;
 }
 
 .event-photo {

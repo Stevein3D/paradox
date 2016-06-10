@@ -6,7 +6,7 @@
 	  <div class="event-entry">
 	  	<div class="row">
 	  	  <div class="col-xs-3">
-	  	    <% if title.series_index.nil?%>
+	  	    <% if title.series_index.nil? || title.series_index.blank? %>
 
             <%= link_to cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class => "event-index-photo", :alt => title.title, :default_image => "Titles:10000.png"), title_path(title.id) %>
 
