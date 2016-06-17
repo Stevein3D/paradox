@@ -8,8 +8,45 @@
   font-weight: normal;
   font-style: normal;
 }
+//////////
+/////////// UNIVERSAL //////////////////////////////////////////////////////////////////////////////////////
+/////////
+
+h1, h2, h3, h4, h5, h6, p {
+  color: white;
+  font-family: 'Interstate-Bold' !important;
+}
+p {
+	font-size: 1.2em;
+	line-height: 1.5;
+	letter-spacing: .8px;
+}
+h2 {
+	margin-top: 15px;
+	font-size: 1.8em;
+}
+h3 {
+  
+  line-height: 1;
+  margin-top: 10px;  
+}
+
+.text-box-out {
+	background-color: #1d2330;
+	padding: 20px 10px;
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7; 
+	margin: 50px auto;
+}
+.text-box- {
+	background-color: #303a50;
+	height: 100%;
+	padding: 20px 10px;
+	margin: auto;
+}
+
 //////
-/////////// HEADER WITH NAV CONTROLS AND LOGO //////////////////////////
+/////////// HEADER WITH NAV CONTROLS AND LOGO ///////////////////////////////////////////////////////////////
 //////
 
 .welcome-row {
@@ -39,7 +76,7 @@
 	height: 40px;
 	border: 2px solid #b8b8c7;
 	border-radius: 10px;
-	margin: 15px 0 20px 0;
+	margin: 20px 0 25px 0;
 }
 
 .pp-button h5 {
@@ -51,7 +88,7 @@
 }
 
 .logo-img {
-	max-width: 200px;
+	max-width: 250px;
 	display: inline-block;
 	margin-top: -100px;
 }
@@ -200,20 +237,7 @@ input[type=submit]{
 	cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  line-height: 1;
-  color: white;
-  font-family: 'Interstate-Bold' !important;
-}
-h2 {
-	margin-top: 15px;
-	font-size: 1.8em;
-}
-h3 {
-  
-  line-height: 1;
-  margin-top: 10px;  
-}
+
 
 .col-centered{
     float: none;
