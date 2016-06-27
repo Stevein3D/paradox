@@ -1,6 +1,7 @@
 <div class="container-fluid">
 <% if tit.has_attribute?(:title) %>
   <!-- EVENT IS A RELEASE -->
+
   <div class="row center">
     <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-images">
       <% if tit.series_index.nil? || tit.series_index.blank? %>
@@ -9,6 +10,17 @@
         <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
       <% end %>
 
+      <% titlePerson = Person.find_by people_index: tit.people_index %>
+
+      <% if !titlePerson.nil? && titlePerson.has_audio? %>
+        <% audioIndex = tit.people_index %>
+        <div id="circle" class="audioButton">
+          <%= image_tag "bubble.png", class: "bubble"%>
+          <%= audio_tag "http://res.cloudinary.com/paradoxparkway/video/upload/ac_mp3/v1448471034/Audio/#{audioIndex}.mp3",
+            class: "audio-play" %>
+        </div>
+        
+      <% end %>
 
       <!-- CHECK IF TITLE IS USING DEFAULT IMAGE FOR RELATED PERSON -->
       <% if tit.people_index == 40000 %>
@@ -56,63 +68,78 @@
   </div>  
 
   <% else %> 
-  <!-- EVENT IS A PERSON-->
-
-  <div class="row center">
-    <div class="col-sm-offset-1 col-sm-10  col-md-offset-3 col-md-6 tit-images">
-      <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo left-tit-image", :default_image => "People:40000.png"), person_path(tit.id) %>
-      <!-- NO TITLE ENTERED FOR THIS PERSON -->
-      <% if tit.title_index == 10000 %>
-        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Titles:10000.png"), person_path(tit.id) %>
-
-      <!-- LINK TO RELATED TITLE FOR THIS PERSON -->
-      <% else %>
-        <% personTitle = Title.find_by title_index: tit.title_index %>
-        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :alt => personTitle.title, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(personTitle.id) %>
-
-      <% end %>
-
-    </div>
-  </div>                
-  <!-- EVENT IS A BIRTH -->
-  <% if tit.birth_month == Time.now.mon.to_i && tit.birth_day == Time.now.day.to_i %>
+    <!-- EVENT IS A PERSON-->
 
     <div class="row center">
-      <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-text">
-        <div class="tit-textbox">
-        
-          <% if !tit.death_year.nil? %>
-          <!-- PERSON WAS BORN TODAY BUT IS DEAD -->
+      <div class="col-sm-offset-1 col-sm-10  col-md-offset-3 col-md-6 tit-images">
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo left-tit-image", :default_image => "People:40000.png"), person_path(tit.id) %>
 
-            <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%> (and sadly passed away in <%= tit.death_year %>).
-            </h4>
+        <!-- IS THERE A SOUND FILE WITH THIS PERSON? -->
 
-          <% else %>
-          <!-- PERSON WAS BORN TODAY AND STILL ALIVE -->
+        <% if tit.has_audio? %>
+          <% audioIndex = tit.people_index %>
+          <div id="circle" class="audioButton">
+            <%= image_tag "bubble.png", class: "bubble"%>
+            <%= audio_tag "http://res.cloudinary.com/paradoxparkway/video/upload/ac_mp3/v1448471034/Audio/#{audioIndex}.mp3",
+            class: "audio-play" %>
+          </div>
+        <% end %>
 
-            <h4>Happy <%=tit.age.ordinalize%> Birthday, <%= link_to tit.full_name, person_path(tit.id) %>!</h4>
-            <h4><%= tit.full_name %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%>.
-            </h4>
-          <% end %>
+        <!-- NO TITLE ENTERED FOR THIS PERSON -->
 
-          <h5> <%= tit.travels %> </h5>
+        <% if tit.title_index == 10000 %>
+          <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Titles:10000.png"), person_path(tit.id) %>
+
+        <!-- LINK TO RELATED TITLE FOR THIS PERSON -->
+
+        <% else %>
+          <% personTitle = Title.find_by title_index: tit.title_index %>
+          <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :alt => personTitle.title, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(personTitle.id) %>
+
+        <% end %>
+
+      </div>
+    </div>                
+    <!-- EVENT IS A BIRTH -->
+    <% if tit.birth_month == Time.now.mon.to_i && tit.birth_day == Time.now.day.to_i %>
+
+      <div class="row center">
+        <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-text">
+          <div class="tit-textbox">
+      
+            <% if !tit.death_year.nil? %>
+            <!-- PERSON WAS BORN TODAY BUT IS DEAD -->
+
+              <h4><%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%> (and sadly passed away in <%= tit.death_year %>).
+              </h4>
+
+            <% else %>
+            <!-- PERSON WAS BORN TODAY AND STILL ALIVE -->
+
+              <h4>Happy <%=tit.age.ordinalize%> Birthday, <%= link_to tit.full_name, person_path(tit.id) %>!</h4>
+              <h4><%= tit.full_name %>, <%= tit.nationality %> <%= tit.profession %>, was born on this day in <%= tit.birth_year%>.
+              </h4>
+            <% end %>
+
+            <h5> <%= tit.travels %> </h5>
+          </div>
         </div>
       </div>
-    </div>
 
-  <% else %>
-  <!-- EVENT IS A DEATH -->
+    <% else %>
+    <!-- EVENT IS A DEATH -->
 
-    <div class="row center">
-      <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 tit-text">
-        <div class="tit-textbox">
-          <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%=tit.profession %>, died on this day in <%= tit.death_year %> (and was born in <%= tit.birth_year %>).
-          </h4>
-          <h5> <%= tit.travels %> </h5>
-        </div>
-      </div>  
-    </div>
+      <div class="row center">
+        <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 tit-text">
+          <div class="tit-textbox">
+            <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%=tit.profession %>, died on this day in <%= tit.death_year %> (and was born in <%= tit.birth_year %>).
+            </h4>
+            <h5> <%= tit.travels %> </h5>
+          </div>
+        </div>  
+      </div>
+
+    <% end %>
+
   <% end %>
-
-<% end %>
 </div>

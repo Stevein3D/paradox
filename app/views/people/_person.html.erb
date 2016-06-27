@@ -34,8 +34,11 @@
         <div class="col-xs-12">
         <% if person.has_audio? %>
           <% audioIndex = person.people_index %>
-          <%= audio_tag "http://res.cloudinary.com/paradoxparkway/video/upload/ac_mp3/v1448471034/Audio/#{audioIndex}.mp3", class: "audio-play" %>
-          <p class="btn btn-default audioButton">Click to hear <%= person.first_name%>'s greeting</p>
+          <div id="circle" class="audioButton">
+            <%= audio_tag "http://res.cloudinary.com/paradoxparkway/video/upload/ac_mp3/v1448471034/Audio/#{audioIndex}.mp3",
+            class: "audio-play" %>
+            <%= image_tag "bubble.png", class: "bubble"%>
+          </div>
         <% end %>
           <br>
         </div>    
