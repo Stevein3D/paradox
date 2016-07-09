@@ -31,7 +31,9 @@ class StaticPagesController < ApplicationController
                     "Take a number.  We’ll be with you between now and eternity...",
                     "Your home for illusion, delusion, and confusion...", "Where infinity begins and ends...",
                     "The Land Beyond The Land Beyond...", "Where it’s always now, now...",
-                    "Welcome to Never Say Never Land!"]
+                    "Welcome to Never Say Never Land!", "Nowhere is now here!", 
+                    "Just two blocks north of the middle of nowhere...", 
+                    "Keep your hands outside the vehicle at all times", "Bridge Out (back in 15 minutes)"]
     
   end
 

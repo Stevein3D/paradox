@@ -26,8 +26,8 @@ h2 {
 	font-size: 1.8em;
 }
 h3 {
-  
-  line-height: 1;
+  font-size: 1.5em; 
+  line-height: 1.5;
   margin-top: 10px;  
 }
 
@@ -133,6 +133,17 @@ input[type=submit]{
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
 }
+.circle {
+	width: 14px;
+	height: 14px;
+	background: white;
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;	
+}
 .bubble {
 	max-width: 60px;
 	margin: 34px auto auto auto;	
@@ -156,19 +167,22 @@ input[type=submit]{
 	height:60px;
 	margin:0 auto;
 }
+.date-tab h2 {
+	background-color: #16161d;
+	padding-top:5px;
+}
 .tit-photo{
-	max-width: 220px;
+	max-width: 300px;
 	padding: 5px 0 5px 0;
 	border: 10px solid #16161d;
 }
 .tit-images{
 	background-color: #303a50;
-	
 	border-top: 4px solid #b8b8c7;
 }
 .tit-text {
 	background-color: #303a50;
-	
+	text-align: center;
 	border-bottom: 4px solid #b8b8c7;
 }
 .left-tit-image {
@@ -193,9 +207,10 @@ input[type=submit]{
 	padding: 15px 20px 10px 20px;
 	border-top: 4px solid #b8b8c7;
 	border-bottom: 4px solid #b8b8c7;
-	margin: 0 15px 20px 15px;
+	margin: 0 auto 20px auto;
 	min-height: 150px;
 	min-width: 300px;
+	max-width: 800px;
 }
 
 ////////////
@@ -227,9 +242,30 @@ input[type=submit]{
 	border: 4px solid #b8b8c7;
 	cursor: pointer;
 }
+//////////
+/////////////////////// TAGLINES /////////////////////////
+/////////////////
 
-
-
+.multiple-choice-box {
+	width: 600px;
+	background-color: #16161d;
+	text-align: left;
+	padding: 10px 20px;
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7;
+	margin: auto;
+}
+.incorrect-text {
+	color: #cc3300;
+	opacity: 0;
+}
+.correct-text {
+	color: #00cc00;
+	opacity: 0;
+}
+////////////////////
+//////////////////////////      ////////////////////
+////////////
 .col-centered{
     float: none;
     margin: 0 auto;
