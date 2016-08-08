@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+
   root                       'static_pages#index'
   get    'paradox_people' => 'static_pages#paradox_people'
   get    'uploads'        => 'static_pages#uploads'

@@ -48,7 +48,7 @@
             "<%= link_to tit.title, title_path(tit.id) %>" premiered.
         
           <% elsif tit.sub_medium =~ /book|novel|video game|video|short/i %>
-            <%= tit.release_year %>, <br> "<%= link_to tit.title, title_path(tit.id) %>" was released.
+            "<%= link_to tit.title, title_path(tit.id) %>" was released.
         
           <% end %>
         </h4>

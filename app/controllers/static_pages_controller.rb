@@ -52,14 +52,5 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def paradox_people
-  end
-
-  def paradox_news
-  end
-
-  def tits
-    
-  end
   
 end
