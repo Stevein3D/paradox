@@ -103,17 +103,7 @@
   </div> <!-- End of Section -->
 
   <!-- /////////////////////  TAGLINE SECTION /////////////////////////-->
-    <script type="text/javascript">
-      
-    window.onload = function() {loadTaglines()};
-
-    function loadTaglines() {
-      $("#balls").replaceWith('<%= escape_javascript(render 'static_pages/tagline') %>');
-    } 
-
-
-
-    </script>
+    
   <!-- ////////////  HEADER ///////////////////-->
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 text-center">
@@ -124,13 +114,15 @@
   </div>
 
   <div class="section">
-    <div id="balls">
+
+  <%= render :partial => "tagline"%>
+    <!-- <div id="balls">
       <div class="sk-folding-cube">
         <div class="sk-cube1 sk-cube"></div>
         <div class="sk-cube2 sk-cube"></div>
         <div class="sk-cube4 sk-cube"></div>
         <div class="sk-cube3 sk-cube"></div>
       </div>
-    </div>
+    </div> -->
     
   </div> <!-- End of Section -->

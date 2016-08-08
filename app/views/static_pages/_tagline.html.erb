@@ -3,13 +3,13 @@
     
       <div id="taglineCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
         <div class="carousel-inner" role="listbox">
-          <% @taglines.shuffle.each_with_index do |tagline, index| %>
+          <% @taglines.each_with_index do |tagline, index| %>
             <div class="item <% if index == 0 %> active <% end %>">
               <h3 style="max-width:700px; margin: 10px auto; font-style: italic"><%= tagline.tagline %></h3>
               <div class="multiple-choice-box">
-                <% randomTaglines = Tagline.limit(120).order("RANDOM()").pluck(:title).to_a %>
+                
                 <% dup = [tagline.title]%>
-                <% multipleChoice = (randomTaglines - dup).sample(2) %>
+                <% multipleChoice = (@randomTaglines - dup).sample(2) %>
                 <% multipleChoice.push(tagline.title).shuffle.each do |choice| %>
                   <div class="row">
                     <% if choice == tagline.title %>

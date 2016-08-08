@@ -5,7 +5,10 @@ class StaticPagesController < ApplicationController
 
   def index
     @today = Time.now
-  	@taglines = Tagline.all
+
+  	@taglines = Tagline.order("RANDOM()").limit(500)
+    @randomTaglines = Tagline.limit(120).order("RANDOM()").pluck(:title).to_a
+
     @releases = Title.where("release_month = ? and release_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
     @births = Person.where("birth_month = ? and birth_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
     @deaths = Person.where("death_month = ? and death_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
@@ -35,7 +38,10 @@ class StaticPagesController < ApplicationController
                     "Just two blocks north of the middle of nowhere...", 
                     "Keep your hands outside the vehicle at all times", "Bridge Out (back in 15 minutes)"]
     
+    
+
   end
+
 
   def new
     @contact = Contact.new
