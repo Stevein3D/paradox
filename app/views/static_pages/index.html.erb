@@ -84,18 +84,22 @@
   </div>
 
   <div class="section">
-    <div class="row">
-      <div class="col-sm-offset-2 col-sm-5 center">
-        <div class="videoWrapper">
-          <iframe src="http://player.vimeo.com/video/<%= @montages.first["id"] %>"
-                style="border: 4px solid #b8b8c7; margin-top: 10px;" 
+    <div class="row center">
+      <div class="video-wrapper">
+        <iframe src="http://player.vimeo.com/video/<%= @montages.first["id"] %>"
+                
                 webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="">
-          </iframe>
+        </iframe>
+      </div>
+      <div class="row center">
+        <div class="video-textbox">
+          <h4 id="vid-desc"> <%= @montages.first["description"]%></h4>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="row center">
         <% @montages.each do |video| %>
-          <%= image_tag video["thumbnail_large"], class: "video-thumb", id: video["id"] %>
+          <%= image_tag video["thumbnail_medium"], class: "video-thumb", id: video["id"], 
+                                                   alt: video["description"] %>
         <% end %>
       </div>
     </div>

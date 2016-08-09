@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   def index
     @today = Time.now
 
-  	@taglines = Tagline.order("RANDOM()").limit(500)
+  	@taglines = Tagline.order("RANDOM()").limit(1000)
     @randomTaglines = Tagline.limit(120).order("RANDOM()").pluck(:title).to_a
 
     @releases = Title.where("release_month = ? and release_day = ?", Time.now.mon.to_i, Time.now.day.to_i)
