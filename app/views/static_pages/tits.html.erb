@@ -33,6 +33,11 @@
               <h5>Release Message: <%= title.release_msg%> </h5>
             <% end %>
 
+            <% titlePerson = Person.find_by people_index: title.people_index %>
+            <% if titlePerson.nil? %>
+              <div style="color:yellow"><strong>Person Path no good.</strong></div>
+            <% end %>
+
           </div>
         </div>
 	  </div>

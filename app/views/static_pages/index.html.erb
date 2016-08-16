@@ -23,7 +23,17 @@
     </div>
 
     <h1>Welcome to Paradox Parkway</h1>
-    <h4><%= @welcomeText.sample %></h4>
+
+    <div id="textCarousel" class="carousel slide" data-ride="carousel" data-interval="7000">
+      <div class="carousel-inner" role="listbox">
+        <% @welcomeText.shuffle.each_with_index do |text, index| %>
+          <div class="item funny <% if index == 0 %> active <% end %>">
+            <h4><%= text %></h4>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <div class="section" style="margin-top: 30px;">
       <h3>
         Paradox Parkway is your first and last stop for mind-bending fun --<br>
@@ -39,7 +49,7 @@
 </div>
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 text-center">
-    <div class="date-tab" >
+    <div class="section-tab" >
       <h2 >Today In Time: <%=@today.strftime("%B #{@today.day.ordinalize}, %Y")%></h2>
     </div>
   </div>  
@@ -77,7 +87,7 @@
   <!-- ////////////  HEADER ///////////////////-->
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 text-center">
-      <div class="date-tab" >
+      <div class="section-tab" >
         <h2 >Movie Montages!</h2>
       </div>
     </div>  
@@ -93,7 +103,7 @@
       </div>
       <div class="row center">
         <div class="video-textbox">
-          <h4 id="vid-desc"> <%= @montages.first["description"]%></h4>
+          <h4 id="vid-description"> <%= @montages.first["description"]%></h4>
         </div>
       </div>
       <div class="row center">
@@ -111,7 +121,7 @@
   <!-- ////////////  HEADER ///////////////////-->
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10 text-center">
-      <div class="date-tab" >
+      <div class="section-tab" >
         <h2 >Tagline Trivia!</h2>
       </div>
     </div>  

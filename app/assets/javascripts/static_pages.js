@@ -52,7 +52,7 @@ $(document).ready(function(){
 		var $url = $(this).attr('id');
 		var $description = $(this).attr('alt');
 		$('iframe').attr('src',"http://player.vimeo.com/video/" + $url + "?autoplay=1");
-		document.getElementById("vid-desc").innerHTML = $description;
+		document.getElementById("vid-description").innerHTML = $description;
 	});
 
 

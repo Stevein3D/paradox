@@ -3,11 +3,11 @@
   <!-- EVENT IS A RELEASE -->
 
   <div class="row center">
-    <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-images">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 tit-images">
       <% if tit.series_index.nil? || tit.series_index.blank? %>
-        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
+        <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :width => 300, :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
       <% else %>
-        <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
+        <%= link_to cl_image_tag("Titles/" + tit.series_index.to_s + ".png", :width => 300, :class => "tit-photo left-tit-image", :alt => tit.title, :default_image => "Titles:10000.png"), title_path(tit.id) %>
       <% end %>
       <!-- <%= image_tag "bubble.png", class: "bubble"%> -->
       <% titlePerson = Person.find_by people_index: tit.people_index %>
@@ -22,11 +22,12 @@
       <% end %>
 
       <!-- CHECK IF TITLE IS USING DEFAULT IMAGE FOR RELATED PERSON -->
+
       <% if tit.people_index == 40000 %>
-        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(tit.id) %>
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :width => 300, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(tit.id) %>
       <% else %>
         <% titlePerson = Person.find_by people_index: tit.people_index %>
-        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), person_path(titlePerson.id) %>
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :width => 300, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), person_path(titlePerson.id) %>
       <% end %>
     </div>
     
@@ -34,7 +35,7 @@
 
   <!-- CHECK TYPE OF RELEASE -->
   <div class="row center ">
-    <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-text">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 tit-text">
       <div class="tit-textbox">
          
         <h4>On this day in <%= tit.release_year %>,
@@ -70,8 +71,8 @@
     <!-- EVENT IS A PERSON-->
 
     <div class="row center">
-      <div class="col-sm-offset-1 col-sm-10  col-md-offset-3 col-md-6 tit-images">
-        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo left-tit-image", :default_image => "People:40000.png"), person_path(tit.id) %>
+      <div class="col-sm-offset-1 col-sm-10  col-md-offset-2 col-md-8 tit-images">
+        <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :width => 300, :alt => tit.full_name, :class => "tit-photo left-tit-image", :default_image => "People:40000.png"), person_path(tit.id) %>
 
         <!-- IS THERE A SOUND FILE WITH THIS PERSON? -->
 
@@ -87,13 +88,13 @@
         <!-- NO TITLE ENTERED FOR THIS PERSON -->
 
         <% if tit.title_index == 10000 %>
-          <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Titles:10000.png"), person_path(tit.id) %>
+          <%= link_to cl_image_tag("People/" + tit.people_index.to_s + ".png", :width => 300, :alt => tit.full_name, :class => "tit-photo right-tit-image", :default_image => "Titles:10000.png"), person_path(tit.id) %>
 
         <!-- LINK TO RELATED TITLE FOR THIS PERSON -->
 
         <% else %>
           <% personTitle = Title.find_by title_index: tit.title_index %>
-          <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :alt => personTitle.title, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(personTitle.id) %>
+          <%= link_to cl_image_tag("Titles/" + tit.title_index.to_s + ".png", :width => 300, :alt => personTitle.title, :class=>"tit-photo right-tit-image", :default_image => "People:40000.png"), title_path(personTitle.id) %>
 
         <% end %>
 
@@ -103,7 +104,7 @@
     <% if tit.birth_month == Time.now.mon.to_i && tit.birth_day == Time.now.day.to_i %>
 
       <div class="row center">
-        <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 tit-text">
+        <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 tit-text">
           <div class="tit-textbox">
       
             <% if !tit.death_year.nil? %>
@@ -129,7 +130,7 @@
     <!-- EVENT IS A DEATH -->
 
       <div class="row center">
-        <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 tit-text">
+        <div class="col-sm-offset-3 col-sm-6 col-md-offset-2 col-md-8 tit-text">
           <div class="tit-textbox">
             <h4> <%= link_to tit.full_name, person_path(tit.id) %>, <%= tit.nationality %> <%=tit.profession %>, died on this day in <%= tit.death_year %> (and was born in <%= tit.birth_year %>).
             </h4>

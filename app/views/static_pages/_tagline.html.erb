@@ -5,7 +5,7 @@
         <div class="carousel-inner" role="listbox">
           <% @taglines.each_with_index do |tagline, index| %>
             <div class="item <% if index == 0 %> active <% end %>">
-              <h3 style="max-width:700px; margin: 10px auto; font-style: italic"><%= tagline.tagline %></h3>
+              <h3 style="max-width:700px; margin: 10px auto; min-height: 70px; font-style: italic"><%= tagline.tagline %></h3>
               <div class="multiple-choice-box">
                 
                 <% dup = [tagline.title]%>
