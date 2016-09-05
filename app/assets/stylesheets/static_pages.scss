@@ -104,6 +104,7 @@ h3 {
 ///////////////
 ///////////////////* Fade transition for carousel items *//////////
 //////////
+
 .carousel .funny {
     left: 0 !important;
     opacity: 0;
@@ -121,15 +122,26 @@ h3 {
   90% { opacity: 1; }
   100% { opacity: 0; }
 }
+
 //////
 /////////// Contact Form //////////////////////////
 //////
+.contact-box {
+	width: 700px;
+	height: 550px;
+	background-color: #303a50;
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7;
+	margin: auto;
 
+}
 .contact-form {
 	background-color: #1d2330;
-	padding:20px 0 50px 0;
-	margin-top: 10px;
-	min-width: 700px;
+	max-width: 620px;
+	padding:20px;
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7;
+	margin: 20px auto;
 }
 
 input[type=submit]{
@@ -191,11 +203,7 @@ input[type=submit]{
 	margin: 0 auto;
 	line-height: 60px;
 }
-.tit-photo{
-	
-	padding: 5px 0 5px 0;
-	border: 8px solid #16161d;
-}
+
 .tit-images{
 	background-color: #303a50;
 	border-top: 4px solid #b8b8c7;
@@ -206,6 +214,8 @@ input[type=submit]{
 	border-bottom: 4px solid #b8b8c7;
 }
 .left-tit-image {
+	padding: 5px;
+	border: 8px solid #16161d;
 	border-top: 4px solid #b8b8c7;
 	border-bottom: 4px solid #b8b8c7;
 	margin: 20px 20px 20px 10px;
@@ -218,6 +228,8 @@ input[type=submit]{
 	display: inline-block;
 }
 .right-tit-image {
+	padding: 5px;
+	border: 8px solid #16161d;
 	border-top: 4px solid #b8b8c7;
 	border-bottom: 4px solid #b8b8c7;
 	margin: 20px 10px 20px 20px;
@@ -387,10 +399,32 @@ input[type=submit]{
 }
 
 ////////////////////
-//////////////////////////      ////////////////////
+//////////////////////////  Titles // People // Paradoxes    ////////////////////
 ////////////
+.entry {
+	background-color: #303a50;
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7;
+	margin-bottom: 20px;
+}
+.entry-details {
+	background-color: #1d2330;
+	padding: 10px;
 
-
+	border-top: 4px solid #b8b8c7;
+	border-bottom: 4px solid #b8b8c7;
+	margin: 10px 0;
+}
+.entry-details h2 {
+	margin-top: 0;
+}
+.entry-details h4 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.ent-label {
+	color: #afb9cf;
+}
 .col-centered{
     float: none;
     margin: 0 auto;
@@ -413,10 +447,15 @@ input[type=submit]{
 }
 
 .profile-photo {
-	margin-top: 10px;
-	margin-bottom: 15px;
+	width: 100%;
+	min-width: 200px;
+	max-width: 300px;
+	padding: 5px;
+	border: 8px solid #16161d;
 	border-top: 4px solid #b8b8c7;
 	border-bottom: 4px solid #b8b8c7;
+	margin-top: 10px;
+	margin-bottom: 15px;
 }
 
 .event-photo {

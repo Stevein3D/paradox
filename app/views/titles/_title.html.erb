@@ -1,56 +1,81 @@
 
-<div class="container-fluid dox-entry">
+<div class="container-fluid entry">
   <div class="row">
-    <div class="col-xs-3">
+
+    <div class="col-xs-5 col-md-3">
       <% if title.series_index.nil? || title.series_index.blank?%>
         <%= cl_image_tag("Titles/" + title.title_index.to_s + ".png", :class=>"profile-photo img-responsive", :alt => title.title, :deafult_image => "Titles:10000") %>
       <% else%>
         <%= cl_image_tag("Titles/" + title.series_index.to_s + ".png", :class=>"profile-photo img-responsive", :alt => title.title, :deafult_image => "Titles:10000") %>
       <% end %>    
     </div>
-    <div class="col-xs-9">
-      <div class="row">
-    	  <div class="col-xs-12"><h4> <%= title.title %></h4>
-          <br>
-        </div>  	
-      </div>
-      <% if !title.season_num.nil? %>
+
+    <div class=" col-xs-7 col-md-9 ">
+
+      <div class="entry-details">
+
+    	  <h2> <%= title.title %></h2>
+
+        <% if !title.season_num.nil? %>
+          <h4> <i><%= title.episode%></i> &nbsp // &nbsp <span class="ent-label">Season:</span> <%= title.season_num  %> 
+               <span class="ent-label">Episode: </span>  <%= title.episode_num %>
+          </h4>
+        <% end %>
+
         <div class="row">
-          <div class="col-xs-6"><p><strong>Season:</strong>  <%=title.season_num%> <strong>Episode:</strong>  <%= title.episode_num%></p></div>
-          <div class="col-xs-6"><p><strong>Episode:</strong> <%=title.episode%> </p></div>
+          <div class="col-xs-6"><h4><span class="ent-label"> Release Date: </span><%= title.release_month %>/<%=title.release_day %>/<%= title.release_year %> </h4></div>
+          <div class="col-xs-6"><h4><span class="ent-label"> Country of Release: </span> <%= title.country %> </h4></div>
         </div>
-      <% end %>
-      <div class="row">
-    	  <div class="col-xs-6"><p> <strong>Release Date:</strong> <%= title.release_date %> </p></div>
-        <div class="col-xs-6"><p> <strong>Country of Release:</strong> <%= title.country %> </p></div>
-      </div>
-      <% if !title.length.nil? %>
-        <% if title.medium == "Literature" %>
+
+        <% if !title.length.nil? %>
           <div class="row">
-            <div class="col-xs-6"><p> <strong>Length:</strong> <%= title.length %> pages</p></div>
-            <div class="col-xs-6"><p> <strong>MPAA:</strong> <%= title.mpaa %> </p></div>
-          </div>
-        <% else %>
-          <div class="row">
-            <div class="col-xs-6"><p> <strong>Length:</strong> <%= title.length %> minutes</p></div>
-            <div class="col-xs-6"><p> <strong>MPAA:</strong> <%= title.mpaa %> </p></div>
+            <div class="col-xs-6">
+              <% if title.medium == "Literature" %>
+                <h4><span class="ent-label"> Length: </span> <%= title.length %> pages</h4>
+              <% else %>
+                <h4><span class="ent-label"> Length: </span><%= title.length %> minutes</h4>
+              <% end %>
+            </div>
+            <div class="col-xs-6"><h4><span class="ent-label"> MPAA: </span><%= title.mpaa %> </h4></div>
           </div>
         <% end %>
-      <% end %>
-      <div class="row">
-        <div class="col-xs-6"><p> <strong>Medium:</strong> <%= title.sub_medium %> </p></div>
-        <div class="col-xs-6"><p> <strong>Genre:</strong> <%= title.genre %> </p></div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12"><p> <strong>Release Message:</strong> <%= title.release_msg %> </p></div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12"><p> <strong>Description:</strong> <%= title.description %> </p></div>
+
+        <div class="row">
+          <div class="col-xs-6"><h4><span class="ent-label"> Medium: </span><%= title.sub_medium %> </h4></div>
+          <div class="col-xs-6"><h4><span class="ent-label"> Genre: </span><%= title.genre %> </h4></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <h4><span class="ent-label"> Release Message: </span><%= title.release_msg %> </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <h4><span class="ent-label"> Description: </span><%= title.description %> </h4>
+          </div>
+        </div>
+
       </div>
       <% if !current_user.nil? && current_user.admin? %>
-        <div class="admin-box col-xs-12"><p> <strong>Production Medium:</strong> <%= title.medium %>   |    <strong>Series Index:</strong> <%= title.series_index%>    |    <strong>Title Index:</strong> <%= title.title_index%>    |    <strong>People Index:</strong> <%= title.people_index%>    |    <br><strong>Title Sort:</strong> <%= title.title_sort%>  |  <strong><%= link_to "DELETE", title, method: :delete, data: { confirm: "Are you sure you want to delete this title?" } %></strong>    |  <strong><%= link_to "EDIT", edit_title_path(title.id) %></strong></p>
+        <div class="entry-details col-xs-12">
+          <h4>
+            <span class="ent-label"> Production Medium: </span>   <%= title.medium %>       | 
+            <span class="ent-label"> Series Index:      </span>   <%= title.series_index%>  |
+            <span class="ent-label"> Title Index:       </span>   <%= title.title_index%>   | 
+            <span class="ent-label"> People Index:      </span>   <%= title.people_index%>  |
+            <br>
+            <span class="ent-label"> Title Sort:        </span>   <%= title.title_sort%>    | 
+            <%= link_to "EDIT", edit_title_path(title.id) %> | 
+            <%= link_to "DELETE", title, method: :delete, 
+                                         data: { confirm: "Are you sure you want to delete this title?" } %>
+          </h4>
         </div>
       <% end %>
+
+
     </div>
+
   </div>
 </div>
