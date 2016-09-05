@@ -61,8 +61,12 @@ $gray-medium-light: #eaeaea;
   width: 100px;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
-  width: 100%;
   padding-top: 60px;
   background-color: black;
 }
@@ -146,8 +150,8 @@ footer {
   a {
     color: $gray;
     &:hover{
-  	  color: $gray-darker;  	
-    }	
+  	  color: $gray-darker;
+    }
   }
   small {
   	float: left;
@@ -205,7 +209,7 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  @include box_sizing; 
+  @include box_sizing;
 }
 
 input {
