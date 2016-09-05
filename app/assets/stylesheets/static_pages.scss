@@ -27,16 +27,20 @@ h2 {
 	font-size: 1.8em;
 }
 h3 {
-  font-size: 1.5em; 
+  font-size: 1.5em;
   line-height: 1.5;
-  margin-top: 10px;  
+  margin-top: 10px;
+}
+
+label {
+  color: white !important; // some color
 }
 
 .text-box-out {
 	background-color: #1d2330;
 	padding: 20px 10px;
 	border-top: 4px solid #b8b8c7;
-	border-bottom: 4px solid #b8b8c7; 
+	border-bottom: 4px solid #b8b8c7;
 	margin: 50px auto;
 }
 .text-box- {
@@ -174,11 +178,11 @@ input[type=submit]{
 	text-align: center;
 	-moz-border-radius: 7px;
 	-webkit-border-radius: 7px;
-	border-radius: 7px;	
+	border-radius: 7px;
 }
 .bubble {
 	max-width: 60px;
-	margin: 34px auto auto auto;	
+	margin: 34px auto auto auto;
 }
 
 .section {
@@ -264,7 +268,7 @@ input[type=submit]{
 
 .video-textbox {
 	background-color: #16161d;
-	
+
 	border-top: 4px solid #b8b8c7;
 	border-bottom: 4px solid #b8b8c7;
 	margin: 5px auto 5px auto;
@@ -326,7 +330,7 @@ input[type=submit]{
   position: relative;
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
-          transform: scale(1.1); 
+          transform: scale(1.1);
 }
 .sk-folding-cube .sk-cube:before {
   content: '';
@@ -360,7 +364,7 @@ input[type=submit]{
 }
 .sk-folding-cube .sk-cube3:before {
   -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s; 
+          animation-delay: 0.6s;
 }
 .sk-folding-cube .sk-cube4:before {
   -webkit-animation-delay: 0.9s;
@@ -370,31 +374,31 @@ input[type=submit]{
   0%, 10% {
     -webkit-transform: perspective(140px) rotateX(-180deg);
             transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; 
+    opacity: 0;
   } 25%, 75% {
     -webkit-transform: perspective(140px) rotateX(0deg);
             transform: perspective(140px) rotateX(0deg);
-    opacity: 1; 
+    opacity: 1;
   } 90%, 100% {
     -webkit-transform: perspective(140px) rotateY(180deg);
             transform: perspective(140px) rotateY(180deg);
-    opacity: 0; 
-  } 
+    opacity: 0;
+  }
 }
 
 @keyframes sk-foldCubeAngle {
   0%, 10% {
     -webkit-transform: perspective(140px) rotateX(-180deg);
             transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; 
+    opacity: 0;
   } 25%, 75% {
     -webkit-transform: perspective(140px) rotateX(0deg);
             transform: perspective(140px) rotateX(0deg);
-    opacity: 1; 
+    opacity: 1;
   } 90%, 100% {
     -webkit-transform: perspective(140px) rotateY(180deg);
             transform: perspective(140px) rotateY(180deg);
-    opacity: 0; 
+    opacity: 0;
   }
 }
 

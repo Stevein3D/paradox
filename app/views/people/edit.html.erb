@@ -5,30 +5,6 @@
       <%= f.label :full_name %>
       <%= f.text_field :full_name, class: 'form-control' %>
 
-      <%= f.label :profession %>
-      <%= f.text_field :profession, class: 'form-control' %>
-
-      <%= f.label :nationality %>
-      <%= f.text_field :nationality, class: 'form-control' %>
-
-      <%= f.label :biography %>
-      <%= f.text_area :biography, class: 'form-control', rows: 5 %>
-
-      <div class="row">
-        <div class="col-md-3">
-          <%= f.label :title_index %>
-          <%= f.text_field :title_index, class: 'form-control' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.label :has_audio %>
-          <%= f.text_field :has_audio, class: 'form-control' %>
-        </div>
-        <div class="col-md-6">
-          <%= f.label :travels %>
-          <%= f.text_field :travels, class: 'form-control' %>
-        </div>
-      </div>
-
       <div class="row">
         <div class="col-md-4">
           <%= f.label :first_name %>
@@ -46,39 +22,60 @@
 
       <div class="row">
         <div class="col-md-3">
-          <%= f.label :birth_date %>
-          <%= f.text_field :birth_date, class: 'form-control' %>
+          <%= f.label :craft %>
+          <%= f.text_field :craft, class: 'form-control' %>
         </div>
         <div class="col-md-3">
-          <%= f.label :birth_day %>
-          <%= f.text_field :birth_day, class: 'form-control' %>
+          <%= f.label :nationality %>
+          <%= f.text_field :nationality, class: 'form-control' %>
         </div>
-        <div class="col-md-3">
-          <%= f.label :birth_month %>
-          <%= f.text_field :birth_month, class: 'form-control' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.label :birth_year %>
-          <%= f.text_field :birth_year, class: 'form-control' %>
+        <div class="col-md-6">
+          <%= f.label :profession %>
+          <%= f.text_field :profession, class: 'form-control' %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-3">
-          <%= f.label :death_date %>
-          <%= f.text_field :death_date, class: 'form-control' %>
+        <div class="col-md-2">
+          <%= f.label :birth_month %>
+          <%= f.text_field :birth_month, class: 'form-control' %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+          <%= f.label :birth_day %>
+          <%= f.text_field :birth_day, class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
+          <%= f.label :birth_year %>
+          <%= f.text_field :birth_year, class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
           <%= f.label :death_day %>
           <%= f.text_field :death_day, class: 'form-control' %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <%= f.label :death_month %>
           <%= f.text_field :death_month, class: 'form-control' %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <%= f.label :death_year %>
           <%= f.text_field :death_year, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= f.label :travels %>
+      <%= f.text_area :travels, class: 'form-control', rows: 4 %>
+
+      <%= f.label :biography %>
+      <%= f.text_area :biography, class: 'form-control', rows: 4 %>
+
+      <div class="row">
+        <div class="col-md-offset-3 col-md-3">
+          <%= f.label :title_index %>
+          <%= f.text_field :title_index, class: 'form-control' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.label :has_audio %>
+          <%= f.text_field :has_audio, class: 'form-control' %>
         </div>
       </div>
 
